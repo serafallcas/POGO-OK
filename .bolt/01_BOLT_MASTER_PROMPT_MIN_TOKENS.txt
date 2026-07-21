@@ -1,0 +1,36 @@
+Continue and correct the existing PUMMA WUMMA Evaluation Tool using React, TypeScript and Supabase.
+
+NON-NEGOTIABLE RULES
+- Do not create an unrelated app.
+- Remove all POGO, Oil & Gas, demo and legacy terminology/data.
+- Keep the Digital PUMMA hierarchy: Level 1 major process area, Level 2 sub-process area, Level 3 business process/question, Level 4 operational guidance/evidence/flow references.
+- Use imported TXT data files as the source of truth; do not rewrite the 298 question guides manually.
+- Keep all expert content status as reference_derived until formal SME approval.
+- Preserve strict TypeScript and Supabase RLS.
+
+IMPLEMENT
+1. Reference model: evaluation types, domains, sub-process areas, processes, questions, maturity scale, instruction guides, evidence guides, maturity guides, alert rules and type/question mappings.
+2. Assessment workspace: Instructions, Evidence, Maturity and Alerts tabs for each question.
+3. Structured response: score 1–5, factual observation, explicit score justification, compliance status, confidence, conclusion, auditee comment and traceable evidence.
+4. Evidence model: store evidence only in assessment_evidence with name, type, category, reference/excerpt, date, owner/source, validation, relevance, authenticity, coverage, reviewer comment and rejection reason.
+5. Validation: block review submission when required fields or minimum evidence are missing. Score equals the highest fully demonstrated maturity level and includes lower-level prerequisites.
+6. Review queue: reviewers accept/reject evidence, compare score to the question maturity description, request correction or approve. Approval is impossible while evidence is pending or insufficient.
+7. Reporting: maturity by Level 1/2/3, gap to target, accepted-evidence coverage, response/review completion, alerts, findings and action plans. Clearly label N/A, not assessed and insufficient evidence.
+8. Security: reference-data writes only for super_admin/program_admin; evaluators and reviewers operate only on authorized organizations/assessments.
+9. Import: idempotent import using source_id/business codes in dependency order. Do not depend on browser-hardcoded UUIDs.
+
+EXECUTION
+- First read 00_README_START_HERE.txt and 02_IMPLEMENTATION_ORDER.txt.
+- Apply the bolt_steps files in numerical order.
+- Apply database_txt migrations in numerical order.
+- Load reference data from 05_REFERENCE_DATA_MASTER_JSON.txt or data_by_domain.
+- Use source_code_txt as exact target-file references when patching the current app.
+
+ACCEPTANCE
+- npm run typecheck, npm run lint and npm run build succeed.
+- Full Standard Assessment loads mapped questions.
+- Every active question has one instruction guide, one evidence guide and five maturity descriptions.
+- Level 3+ submissions enforce the configured evidence minimum.
+- Review approval is blocked by pending/insufficient evidence.
+- No visible POGO or Oil & Gas terminology remains.
+- Dashboards reconcile with assessment responses and accepted evidence.

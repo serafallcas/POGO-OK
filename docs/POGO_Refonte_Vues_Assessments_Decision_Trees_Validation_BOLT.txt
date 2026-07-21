@@ -1,0 +1,444 @@
+POGO EVALUATION TOOL
+REFONTE COMPLETE DES VUES, DU WORKFLOW D'ASSESSMENT ET DE LA GENERATION DES FINDINGS / ACTION PLANS
+================================================================================
+
+1. OBJECTIF GENERAL
+Repenser l'application comme une plateforme opérationnelle d'évaluation :
+- parcours guidé ;
+- arbres de décision par question ;
+- validation indépendante ;
+- génération contrôlée des findings ;
+- plans d'action reliés à des findings validés ;
+- reporting fiable ;
+- traçabilité complète.
+
+2. NAVIGATION CIBLE
+Six espaces :
+1. Executive Dashboard
+2. Assessments
+3. Findings & Action Plans
+4. Reference Library
+5. Reporting
+6. Administration
+
+3. VUES A RECONSTRUIRE
+
+3.1 Executive Dashboard
+Afficher :
+- assessments par statut ;
+- taux de complétion ;
+- score actuel et cible ;
+- alertes critiques ;
+- findings ouverts ;
+- actions en retard ;
+- couverture et qualité des preuves ;
+- heatmap domaine x maturité ;
+- top processus faibles ;
+- assessments à valider.
+
+3.2 Assessments List
+Colonnes :
+- titre, organisation, type, périmètre, manager, évaluateurs, reviewer ;
+- statut, progression, score, cible, alertes, findings, échéance.
+Vues enregistrées :
+- Mes assessments ;
+- À valider ;
+- En retard ;
+- Avec alertes critiques ;
+- Clos récemment.
+
+3.3 Wizard de création
+Étapes :
+1. Identification
+2. Périmètre
+3. Questionnaire
+4. Équipe
+5. Calendrier
+6. Validation du cadrage
+
+Blocages :
+- scope vide ;
+- aucun questionnaire ;
+- aucun évaluateur ;
+- aucun reviewer ;
+- version du référentiel non fixée.
+
+4. ASSESSMENT 360
+Onglets :
+1. Overview
+2. Scope
+3. Assessment Workspace
+4. Evidence
+5. Alerts
+6. Findings
+7. Action Plans
+8. Review & Approval
+
+Timeline :
+Draft -> Scoped -> In Progress -> Submitted -> Under Review ->
+Corrections Required -> Validated -> Approved -> Closed.
+
+5. ASSESSMENT WORKSPACE
+Vue en trois panneaux :
+
+GAUCHE
+- arbre Domaine > Processus > Questionnaire > Question ;
+- filtres : non traité, preuve manquante, score faible, rejeté, finding potentiel.
+
+CENTRE
+- question ;
+- objectif ;
+- risque ;
+- réponse ;
+- score ;
+- cible ;
+- commentaire ;
+- conclusion ;
+- décision ;
+- finding potentiel.
+
+DROITE
+- fiche d'instruction ;
+- guide de preuve ;
+- critères de scoring ;
+- arbre de décision ;
+- références ;
+- historique ;
+- commentaires reviewer.
+
+6. ARBRES DE DECISION
+
+Tables :
+- decision_trees
+- decision_nodes
+- decision_edges
+- decision_outcomes
+
+Types de nœuds :
+- yes_no ;
+- single_choice ;
+- multi_choice ;
+- numeric ;
+- maturity_gate ;
+- evidence_gate ;
+- reviewer_gate ;
+- outcome.
+
+Arbre standard :
+Q1. La pratique existe-t-elle ?
+- Non : score 0 ou 1
+- Oui : continuer
+
+Q2. Est-elle documentée et approuvée ?
+- Non : score maximum 2
+- Oui : continuer
+
+Q3. Est-elle déployée de manière homogène ?
+- Non : score maximum 2
+- Oui : continuer
+
+Q4. Des preuves d'exécution sont-elles disponibles ?
+- Non : score maximum 2
+- Oui : continuer
+
+Q5. La pratique est-elle mesurée par des KPI ?
+- Non : score maximum 3
+- Oui : continuer
+
+Q6. Une amélioration continue est-elle démontrée ?
+- Non : score maximum 4
+- Oui : score potentiel 5
+
+Règles :
+- aucun score supérieur au plafond de l'arbre ;
+- score 3 exige une preuve d'exécution ;
+- score 4 exige un KPI ou une preuve de mesure ;
+- score 5 exige amélioration continue ;
+- N/A exige justification ;
+- preuve obligatoire manquante bloque la validation.
+
+7. FICHE D'INSTRUCTION PAR QUESTION
+Champs :
+- objective ;
+- risk_addressed ;
+- expected_outcome ;
+- scope_guidance ;
+- interview_roles ;
+- interview_questions ;
+- documents_to_request ;
+- review_steps ;
+- testing_steps ;
+- sampling_method ;
+- acceptance_criteria ;
+- rejection_criteria ;
+- scoring_level_0 à scoring_level_5 ;
+- score_cap_rules ;
+- not_applicable_conditions ;
+- red_flags ;
+- conclusion_template ;
+- recommendation_template ;
+- expert_references ;
+- version ;
+- approved_by ;
+- approved_at.
+
+8. GUIDE DE PREUVE PAR QUESTION
+Champs :
+- evidence_category ;
+- evidence_title ;
+- description ;
+- mandatory ;
+- minimum_count ;
+- freshness_requirement ;
+- source_type ;
+- validation_method ;
+- acceptance_criteria ;
+- rejection_criteria ;
+- supports_min_score ;
+- supports_max_score ;
+- confidentiality_level.
+
+Catégories :
+policy, procedure, governance, organizational, system, transaction,
+sample, interview, observation, report, KPI, audit, regulatory,
+continuous_improvement.
+
+Règles :
+- interview seule : score maximum 2 ;
+- politique sans preuve d'exécution : score maximum 2 ;
+- score 3 : preuve d'exécution validée ;
+- score 4 : preuve de mesure/KPI ;
+- score 5 : preuve d'amélioration continue ;
+- preuve rejetée exclue du calcul.
+
+9. WORKFLOW DE VALIDATION D'UNE REPONSE
+Draft -> Completed by Evaluator -> Submitted for Review ->
+Reviewed -> Correction Required ou Accepted -> Validated.
+
+Blocages :
+- score absent ;
+- conclusion absente ;
+- justification insuffisante ;
+- preuve obligatoire manquante ;
+- arbre incomplet ;
+- score au-dessus du plafond ;
+- N/A non justifié.
+
+Le reviewer peut :
+- accepter ;
+- demander correction ;
+- ajuster le score avec justification ;
+- rejeter une preuve ;
+- demander une preuve ;
+- confirmer ou annuler le finding potentiel.
+
+10. VALIDATION GLOBALE DE L'ASSESSMENT
+
+GATE 1 - COMPLETENESS
+- 100 % des questions obligatoires traitées ;
+- réponses finalisées ;
+- N/A justifiés ;
+- preuves obligatoires présentes.
+
+GATE 2 - QUALITY REVIEW
+- reviewer assigné ;
+- réponses critiques revues ;
+- scores incohérents corrigés ;
+- preuves invalides traitées ;
+- commentaires clos.
+
+GATE 3 - FINDINGS VALIDATION
+- findings potentiels acceptés ou rejetés ;
+- sévérité validée ;
+- cause, impact, recommandation renseignés ;
+- doublons fusionnés.
+
+GATE 4 - ACTION PLAN VALIDATION
+- chaque finding confirmé possède une action ;
+- responsable, échéance, priorité et critères de clôture renseignés ;
+- accord management enregistré.
+
+GATE 5 - FINAL APPROVAL
+- score recalculé ;
+- dashboard à jour ;
+- rapport généré ;
+- approbateur final désigné ;
+- approbation enregistrée.
+
+Aucun assessment ne peut être clôturé si un gate est incomplet.
+
+11. FINDINGS
+Déclencheurs :
+- score <= seuil ;
+- alerte critique ;
+- preuve obligatoire absente ;
+- écart cible important ;
+- non-conformité réglementaire ;
+- contrôle critique non déployé ;
+- faiblesse répétée ;
+- décision reviewer.
+
+Structure :
+- criteria ;
+- condition ;
+- cause ;
+- consequence ;
+- risk_statement ;
+- impact ;
+- likelihood ;
+- severity ;
+- recommendation ;
+- management_response ;
+- owner ;
+- target_date ;
+- validation_status.
+
+Rédaction :
+Critère attendu -> Situation observée -> Cause -> Risque/impact -> Recommandation.
+
+Déduplication :
+- comparer titre, domaine, processus, cause et questions sources ;
+- proposer fusion ;
+- autoriser finding transversal ;
+- conserver tous les liens sources.
+
+12. ACTION PLANS
+Création uniquement depuis un finding validé.
+
+Champs :
+- title ;
+- detailed_action ;
+- action_type ;
+- priority ;
+- owner ;
+- sponsor ;
+- start_date ;
+- due_date ;
+- milestones ;
+- resources ;
+- dependencies ;
+- expected_deliverable ;
+- closure_criteria ;
+- evidence_required_for_closure ;
+- residual_risk ;
+- progress_percent ;
+- validation_status.
+
+Workflow :
+Draft -> Management Review -> Accepted -> In Progress ->
+Evidence Submitted -> Closure Review -> Closed ou Reopened.
+
+Règles :
+- aucune action sans finding validé ;
+- aucune action sans owner ni échéance ;
+- aucune fermeture sans preuve ;
+- action en retard = alerte ;
+- action critique = validation sponsor.
+
+13. REPORTING
+Dashboard Assessment :
+- progression ;
+- score par domaine et processus ;
+- maturité actuelle vs cible ;
+- taux et qualité des preuves ;
+- alertes ;
+- findings ;
+- actions ;
+- gates ;
+- blocages.
+
+Heatmaps :
+- domaine x score ;
+- processus x maturité ;
+- domaine x criticité ;
+- finding x sévérité ;
+- action x statut ;
+- preuve x qualité.
+
+Rapports :
+- Executive Summary ;
+- Detailed Assessment Report ;
+- Maturity Gap Report ;
+- Findings Register ;
+- Action Plan Tracker ;
+- Evidence Register ;
+- Validation Report ;
+- Audit Trail.
+
+Inclure uniquement les réponses validées dans les scores finaux.
+
+14. MODELE DE DONNEES A COMPLETER
+Ajouter :
+- assessment_versions ;
+- assessment_scope_versions ;
+- assessment_assignments ;
+- assessment_validation_gates ;
+- response_reviews ;
+- response_history ;
+- decision_trees ;
+- decision_nodes ;
+- decision_edges ;
+- decision_outcomes ;
+- evidence_quality_reviews ;
+- finding_sources ;
+- finding_reviews ;
+- action_plan_reviews ;
+- report_snapshots ;
+- approval_records.
+
+Contraintes :
+- unique(assessment_id, question_id) pour la réponse active ;
+- aucun finding final sans source ;
+- aucune action finale sans finding ;
+- aucune clôture sans validation ;
+- journalisation obligatoire des changements de score.
+
+15. LOTS BOLT A EXECUTER
+LOT 1 - UX et navigation
+LOT 2 - Wizard de création
+LOT 3 - Assessment 360
+LOT 4 - Workspace trois panneaux
+LOT 5 - Decision Tree Engine
+LOT 6 - Instruction Sheets
+LOT 7 - Evidence Engine
+LOT 8 - Response Review
+LOT 9 - Findings Engine
+LOT 10 - Action Plan Engine
+LOT 11 - Validation Gates
+LOT 12 - Reporting
+LOT 13 - Security / RLS
+LOT 14 - Tests et non-régression
+
+16. PROMPT BOLT EXECUTIF
+Rebuild POGO Evaluation Tool around a structured, role-based and validation-driven assessment lifecycle.
+
+Replace the current navigation, assessment workspace, response workflow, findings generation,
+action plans and reporting.
+
+Implement:
+- executive dashboard;
+- advanced assessment list;
+- six-step assessment wizard;
+- Assessment 360;
+- three-panel workspace;
+- configurable decision trees;
+- structured instruction sheet per question;
+- structured evidence guide per question;
+- response review workflow;
+- five validation gates;
+- controlled findings generation;
+- action plans generated only from validated findings;
+- reporting based only on validated responses;
+- complete audit trail and strict RLS.
+
+Never allow:
+- a score without justification;
+- a high score without sufficient evidence;
+- N/A without explanation;
+- assessment submission with incomplete mandatory questions;
+- finding confirmation without reviewer validation;
+- action plan creation without a validated finding;
+- action closure without evidence;
+- assessment closure while a validation gate is incomplete.
+
+Use data-driven configuration and preserve existing valid data through migrations.

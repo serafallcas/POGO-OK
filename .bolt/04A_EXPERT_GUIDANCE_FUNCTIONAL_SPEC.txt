@@ -1,0 +1,56 @@
+SOURCE: Functional expert-guidance specification
+
+# PUMMA WUMMA — couche de guidance experte
+
+## Ce qui a été intégré
+
+### Référentiel par question
+Chaque question possède trois objets de référence distincts :
+
+- `question_instruction_guides` : objectif, périmètre, étapes d’entretien, méthode de validation, règle de scoring, signaux d’alerte et bonnes pratiques ;
+- `question_evidence_guides` : preuves attendues, contrôles de validité, minimum requis, formats acceptables, fraîcheur et critères de rejet ;
+- `question_maturity_guides` : descriptions spécifiques des niveaux 1 à 5 et règle de sélection du score.
+
+### Réponses cadrées
+Le workspace impose désormais une structure de réponse :
+
+- constat factuel ;
+- score de maturité ;
+- justification du score ;
+- statut de conformité ;
+- niveau de confiance ;
+- preuves traçables ;
+- conclusion experte ou recommandation.
+
+La soumission pour revue est bloquée si les champs essentiels ou les preuves minimales sont absents.
+
+### Validation des preuves
+Les preuves ne sont plus stockées dans un tableau informel au niveau de la réponse. Chaque élément est enregistré dans `assessment_evidence` avec : type, catégorie, date, propriétaire, référence, statut de validation, commentaire et motif de rejet.
+
+### Revue qualité
+La page `Review Queue` permet au reviewer de comparer le score aux critères de maturité, d’accepter ou rejeter les preuves et d’approuver ou retourner la réponse.
+
+## Statut de l’expertise
+Les contenus livrés sont issus du Digital PUMMA Playbook V2.1 et des modèles de maturité PUMMA/WUMMA fournis. Ils sont qualifiés `reference_derived` tant qu’un SME ou administrateur du programme ne les a pas formellement revus. Ce statut est volontaire afin d’éviter de présenter un contenu dérivé comme une validation indépendante.
+
+## Fichiers clés
+
+- Migration : `supabase/migrations/20260720120000_add_pumma_expert_guidance.sql`
+- Seed reproductible : `supabase/seed_pumma_expert_guidance.sql`
+- JSON canonique : `public/data/seed_bundle_playbook_aligned.json`
+- CSV par objet : `public/data/csv/`
+- Workspace : `src/pages/AssessmentWorkspace.tsx`
+- Fiche expert : `src/components/QuestionGuidancePanel.tsx`
+- Gestion des preuves : `src/components/EvidenceManager.tsx`
+- Revue : `src/pages/ReviewQueue.tsx`
+- Import : `src/pages/ImportCenter.tsx`
+
+## Ordre de déploiement
+
+1. Déployer la migration.
+2. Charger le seed SQL ou utiliser l’Import Center.
+3. Vérifier les volumes et les mappings.
+4. Créer une évaluation test.
+5. Renseigner une réponse avec preuves.
+6. Soumettre pour revue.
+7. Valider les preuves et approuver la réponse.

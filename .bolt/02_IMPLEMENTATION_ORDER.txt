@@ -1,0 +1,52 @@
+ORDRE D'IMPLÉMENTATION BOLT
+===========================
+
+PHASE 0 — SAUVEGARDE ET DIAGNOSTIC
+- Conserver une copie du projet actuel.
+- Exécuter typecheck, lint et build avant modification.
+- Inventorier les routes, tables, colonnes et anciennes références POGO.
+
+PHASE 1 — NETTOYAGE DU SHELL
+- Renommer totalement l'application en PUMMA WUMMA Evaluation Tool.
+- Supprimer les données, libellés, routes et composants hérités POGO/Oil & Gas.
+- Corriger les routes cassées et les contrats AuthContext/Layout.
+
+PHASE 2 — MODÈLE DE DONNÉES
+- Appliquer les migrations dans database_txt.
+- Vérifier les clés, contraintes, index, vues et RLS.
+- Ne jamais créer evidence_references dans assessment_responses.
+
+PHASE 3 — CHARGEMENT DU RÉFÉRENTIEL
+- Charger core_reference_data puis les lots par domaine.
+- Utiliser source_id/code pour les upserts idempotents.
+- Vérifier les volumes attendus après import.
+
+PHASE 4 — BANQUE DE QUESTIONS ET GUIDANCE
+- Afficher la hiérarchie L1/L2/L3.
+- Afficher source, version, statut de revue et complétude des guides.
+- Intégrer le panneau Instructions / Evidence / Maturity / Alerts.
+
+PHASE 5 — WORKSPACE D'ÉVALUATION
+- Implémenter sauvegarde brouillon, validation, soumission et verrouillage.
+- Imposer constat, score, justification, conformité, confiance et preuves.
+- Calculer les exigences de preuve selon la question et le score.
+
+PHASE 6 — REVUE QUALITÉ
+- Implémenter la file de revue.
+- Valider/rejeter les preuves individuellement.
+- Empêcher l'approbation si preuve en attente, insuffisante ou rejetée sans correction.
+
+PHASE 7 — SCORING, ALERTES ET ACTIONS
+- Calculer les scores pondérés uniquement sur les réponses évaluées.
+- Séparer N/A, non évalué et preuve insuffisante.
+- Générer alertes, constats et plans d'action traçables.
+
+PHASE 8 — REPORTING
+- Dashboard global et par L1/L2/L3.
+- Maturité actuelle, cible, écart, couverture de preuve, avancement, revue.
+- Export cohérent avec les données sources et filtres organisation/période/type.
+
+PHASE 9 — SÉCURITÉ ET RECETTE
+- Vérifier RLS par organisation, rôle et évaluation.
+- Tester les rôles super_admin, program_admin, evaluator, reviewer et viewer.
+- Exécuter tous les tests de 09_ACCEPTANCE_TESTS.txt.

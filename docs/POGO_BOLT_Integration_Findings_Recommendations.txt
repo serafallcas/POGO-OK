@@ -1,0 +1,17 @@
+POGO EVALUATION TOOL – INTEGRATION DU REGISTRE DES FINDINGS ET RECOMMANDATIONS
+
+Importer POGO_Findings_Recommendations_Registry.json avec des upserts idempotents.
+Créer les tables finding_templates, recommendation_library, question_finding_mappings, finding_sources, assessment_findings, finding_recommendations, finding_reviews, action_plans, action_plan_evidence et action_plan_reviews.
+
+Règles :
+- générer seulement un finding Potential à partir des déclencheurs ;
+- imposer une confirmation, un rejet ou une fusion par le reviewer ;
+- conserver toutes les questions/réponses sources ;
+- réutiliser les recommandations du master et autoriser un override contextuel ;
+- créer les actions uniquement depuis des findings Confirmed ;
+- empêcher la clôture tant que les actions ne sont pas closes ou le risque résiduel accepté ;
+- détecter les doublons par domaine, processus, cause, risque et questions sources.
+
+Dans Assessment 360 ajouter : registre des findings, panneau bibliothèque de recommandations, file de validation reviewer, suggestions de fusion, génération d’action plan et analyses transversales.
+
+Reporting : findings par sévérité/domaine/processus, causes récurrentes, recommandations récurrentes, findings sans actions, actions en retard, délai moyen de remédiation et findings multi-questions.

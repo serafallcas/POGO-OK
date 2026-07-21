@@ -1,0 +1,288 @@
+TARGET: Supabase SQL editor or migration file
+
+/*
+  PUMMA WUMMA expert guidance extension
+  - Aligns reference taxonomy with Digital PUMMA Levels 1-3
+  - Adds question-specific assessor instructions, evidence guides and maturity guides
+  - Adds evidence quality controls and response readiness fields
+*/
+
+-- Canonical source identifiers and playbook taxonomy
+ALTER TABLE evaluation_types ADD COLUMN IF NOT EXISTS source_id text;
+CREATE UNIQUE INDEX IF NOT EXISTS ux_evaluation_types_source_id ON evaluation_types(source_id) WHERE source_id IS NOT NULL;
+
+ALTER TABLE domains ADD COLUMN IF NOT EXISTS source_id text;
+ALTER TABLE domains ADD COLUMN IF NOT EXISTS model_family text;
+ALTER TABLE domains ADD COLUMN IF NOT EXISTS playbook_level integer NOT NULL DEFAULT 1;
+ALTER TABLE domains ADD COLUMN IF NOT EXISTS source_workbook text;
+CREATE UNIQUE INDEX IF NOT EXISTS ux_domains_source_id ON domains(source_id) WHERE source_id IS NOT NULL;
+
+CREATE TABLE IF NOT EXISTS sub_process_areas (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  source_id text,
+  domain_id uuid NOT NULL REFERENCES domains(id) ON DELETE CASCADE,
+  code text UNIQUE NOT NULL,
+  label text NOT NULL,
+  description text,
+  playbook_level integer NOT NULL DEFAULT 2,
+  is_active boolean NOT NULL DEFAULT true,
+  sort_order integer NOT NULL DEFAULT 0,
+  created_at timestamptz NOT NULL DEFAULT now(),
+  updated_at timestamptz NOT NULL DEFAULT now()
+);
+CREATE UNIQUE INDEX IF NOT EXISTS ux_sub_process_areas_source_id ON sub_process_areas(source_id) WHERE source_id IS NOT NULL;
+CREATE INDEX IF NOT EXISTS idx_sub_process_areas_domain ON sub_process_areas(domain_id);
+ALTER TABLE sub_process_areas ENABLE ROW LEVEL SECURITY;
+
+ALTER TABLE processes ADD COLUMN IF NOT EXISTS source_id text;
+ALTER TABLE processes ADD COLUMN IF NOT EXISTS sub_process_area_id uuid REFERENCES sub_process_areas(id);
+ALTER TABLE processes ADD COLUMN IF NOT EXISTS primary_dimension text;
+ALTER TABLE processes ADD COLUMN IF NOT EXISTS framework_component_code text;
+ALTER TABLE processes ADD COLUMN IF NOT EXISTS playbook_level integer NOT NULL DEFAULT 3;
+CREATE UNIQUE INDEX IF NOT EXISTS ux_processes_source_id ON processes(source_id) WHERE source_id IS NOT NULL;
+CREATE INDEX IF NOT EXISTS idx_processes_sub_process_area ON processes(sub_process_area_id);
+
+ALTER TABLE questions ADD COLUMN IF NOT EXISTS source_id text;
+ALTER TABLE questions ADD COLUMN IF NOT EXISTS evidence_min_required integer NOT NULL DEFAULT 1;
+ALTER TABLE questions ADD COLUMN IF NOT EXISTS primary_dimension text;
+ALTER TABLE questions ADD COLUMN IF NOT EXISTS expert_review_status text NOT NULL DEFAULT 'reference_derived';
+ALTER TABLE questions ADD COLUMN IF NOT EXISTS expert_basis text;
+CREATE UNIQUE INDEX IF NOT EXISTS ux_questions_source_id ON questions(source_id) WHERE source_id IS NOT NULL;
+
+-- Many-to-many scope: a question can belong to several assessment types
+CREATE TABLE IF NOT EXISTS assessment_type_questions (
+  assessment_type_id uuid NOT NULL REFERENCES evaluation_types(id) ON DELETE CASCADE,
+  question_id uuid NOT NULL REFERENCES questions(id) ON DELETE CASCADE,
+  is_required boolean NOT NULL DEFAULT true,
+  weight_override numeric,
+  inclusion_reason text,
+  created_at timestamptz NOT NULL DEFAULT now(),
+  PRIMARY KEY (assessment_type_id, question_id)
+);
+CREATE INDEX IF NOT EXISTS idx_assessment_type_questions_question ON assessment_type_questions(question_id);
+ALTER TABLE assessment_type_questions ENABLE ROW LEVEL SECURITY;
+
+-- Detailed assessor instruction sheet, one record per question
+CREATE TABLE IF NOT EXISTS question_instruction_guides (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  question_id uuid NOT NULL UNIQUE REFERENCES questions(id) ON DELETE CASCADE,
+  objective text NOT NULL,
+  assessment_scope text NOT NULL,
+  interview_steps jsonb NOT NULL DEFAULT '[]'::jsonb,
+  expected_evidence_summary text,
+  validation_method text NOT NULL,
+  scoring_guidance text NOT NULL,
+  red_flags jsonb NOT NULL DEFAULT '[]'::jsonb,
+  good_practice_signals jsonb NOT NULL DEFAULT '[]'::jsonb,
+  alert_rule text,
+  source_reference text,
+  expert_basis text,
+  version text NOT NULL DEFAULT '2.0',
+  review_status text NOT NULL DEFAULT 'reference_derived',
+  reviewed_by text,
+  reviewed_at timestamptz,
+  created_at timestamptz NOT NULL DEFAULT now(),
+  updated_at timestamptz NOT NULL DEFAULT now()
+);
+CREATE INDEX IF NOT EXISTS idx_question_instruction_guides_question ON question_instruction_guides(question_id);
+ALTER TABLE question_instruction_guides ENABLE ROW LEVEL SECURITY;
+
+-- Detailed evidence guide, one record per question
+CREATE TABLE IF NOT EXISTS question_evidence_guides (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  question_id uuid NOT NULL UNIQUE REFERENCES questions(id) ON DELETE CASCADE,
+  expected_evidence_detail text NOT NULL,
+  validation_checks jsonb NOT NULL DEFAULT '[]'::jsonb,
+  red_flags jsonb NOT NULL DEFAULT '[]'::jsonb,
+  minimum_evidence_count integer NOT NULL DEFAULT 1 CHECK (minimum_evidence_count >= 0),
+  preferred_evidence_count integer NOT NULL DEFAULT 2 CHECK (preferred_evidence_count >= minimum_evidence_count),
+  evidence_quality_rule text NOT NULL,
+  acceptable_formats jsonb NOT NULL DEFAULT '[]'::jsonb,
+  recency_requirement text,
+  mandatory_for_score_at_or_above integer NOT NULL DEFAULT 3 CHECK (mandatory_for_score_at_or_above BETWEEN 1 AND 5),
+  source_reference text,
+  version text NOT NULL DEFAULT '2.0',
+  review_status text NOT NULL DEFAULT 'reference_derived',
+  reviewed_by text,
+  reviewed_at timestamptz,
+  created_at timestamptz NOT NULL DEFAULT now(),
+  updated_at timestamptz NOT NULL DEFAULT now()
+);
+CREATE INDEX IF NOT EXISTS idx_question_evidence_guides_question ON question_evidence_guides(question_id);
+ALTER TABLE question_evidence_guides ENABLE ROW LEVEL SECURITY;
+
+-- Question-specific maturity descriptions
+CREATE TABLE IF NOT EXISTS question_maturity_guides (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  question_id uuid NOT NULL UNIQUE REFERENCES questions(id) ON DELETE CASCADE,
+  level_1_basic text NOT NULL,
+  level_2_developing text NOT NULL,
+  level_3_established text NOT NULL,
+  level_4_advanced text NOT NULL,
+  level_5_leading text NOT NULL,
+  scoring_rule text NOT NULL,
+  source_reference text,
+  version text NOT NULL DEFAULT '2.0',
+  review_status text NOT NULL DEFAULT 'reference_derived',
+  reviewed_by text,
+  reviewed_at timestamptz,
+  created_at timestamptz NOT NULL DEFAULT now(),
+  updated_at timestamptz NOT NULL DEFAULT now()
+);
+CREATE INDEX IF NOT EXISTS idx_question_maturity_guides_question ON question_maturity_guides(question_id);
+ALTER TABLE question_maturity_guides ENABLE ROW LEVEL SECURITY;
+
+-- Response quality and evidence-based score justification
+ALTER TABLE assessment_responses ADD COLUMN IF NOT EXISTS score_justification text;
+ALTER TABLE assessment_responses ADD COLUMN IF NOT EXISTS expert_conclusion text;
+ALTER TABLE assessment_responses ADD COLUMN IF NOT EXISTS evidence_quality text NOT NULL DEFAULT 'not_assessed';
+ALTER TABLE assessment_responses ADD COLUMN IF NOT EXISTS evidence_completeness numeric NOT NULL DEFAULT 0;
+ALTER TABLE assessment_responses ADD COLUMN IF NOT EXISTS review_status text NOT NULL DEFAULT 'draft';
+ALTER TABLE assessment_responses ADD COLUMN IF NOT EXISTS validation_notes text;
+
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1 FROM pg_constraint
+    WHERE conname = 'assessment_responses_assessment_question_key'
+  ) THEN
+    ALTER TABLE assessment_responses
+      ADD CONSTRAINT assessment_responses_assessment_question_key UNIQUE (assessment_id, question_id);
+  END IF;
+END $$;
+
+-- Evidence quality dimensions
+ALTER TABLE assessment_evidence ADD COLUMN IF NOT EXISTS evidence_category text;
+ALTER TABLE assessment_evidence ADD COLUMN IF NOT EXISTS document_date date;
+ALTER TABLE assessment_evidence ADD COLUMN IF NOT EXISTS evidence_owner text;
+ALTER TABLE assessment_evidence ADD COLUMN IF NOT EXISTS relevance_status text NOT NULL DEFAULT 'not_reviewed';
+ALTER TABLE assessment_evidence ADD COLUMN IF NOT EXISTS authenticity_status text NOT NULL DEFAULT 'not_reviewed';
+ALTER TABLE assessment_evidence ADD COLUMN IF NOT EXISTS coverage_status text NOT NULL DEFAULT 'not_reviewed';
+ALTER TABLE assessment_evidence ADD COLUMN IF NOT EXISTS validation_status text NOT NULL DEFAULT 'pending';
+ALTER TABLE assessment_evidence ADD COLUMN IF NOT EXISTS rejection_reason text;
+ALTER TABLE assessment_evidence ADD COLUMN IF NOT EXISTS updated_at timestamptz NOT NULL DEFAULT now();
+
+-- Readable consolidated view for UI and reporting
+CREATE OR REPLACE VIEW question_expert_guidance AS
+SELECT
+  q.id AS question_id,
+  q.question_code,
+  q.question_text,
+  q.domain_id,
+  q.process_id,
+  q.primary_dimension,
+  q.evidence_min_required,
+  q.expert_review_status,
+  q.expert_basis,
+  d.label AS domain_label,
+  spa.label AS sub_process_area_label,
+  p.label AS process_label,
+  ig.objective,
+  ig.assessment_scope,
+  ig.interview_steps,
+  ig.expected_evidence_summary,
+  ig.validation_method,
+  ig.scoring_guidance,
+  ig.red_flags AS instruction_red_flags,
+  ig.good_practice_signals,
+  ig.alert_rule,
+  eg.expected_evidence_detail,
+  eg.validation_checks,
+  eg.red_flags AS evidence_red_flags,
+  eg.minimum_evidence_count,
+  eg.preferred_evidence_count,
+  eg.evidence_quality_rule,
+  eg.acceptable_formats,
+  eg.recency_requirement,
+  eg.mandatory_for_score_at_or_above,
+  mg.level_1_basic,
+  mg.level_2_developing,
+  mg.level_3_established,
+  mg.level_4_advanced,
+  mg.level_5_leading,
+  mg.scoring_rule
+FROM questions q
+LEFT JOIN domains d ON d.id = q.domain_id
+LEFT JOIN processes p ON p.id = q.process_id
+LEFT JOIN sub_process_areas spa ON spa.id = p.sub_process_area_id
+LEFT JOIN question_instruction_guides ig ON ig.question_id = q.id
+LEFT JOIN question_evidence_guides eg ON eg.question_id = q.id
+LEFT JOIN question_maturity_guides mg ON mg.question_id = q.id;
+
+-- RLS helper for reference-data administration
+CREATE OR REPLACE FUNCTION is_pumma_reference_admin()
+RETURNS boolean
+LANGUAGE sql
+STABLE
+SECURITY DEFINER
+SET search_path = public
+AS $$
+  SELECT EXISTS (
+    SELECT 1
+    FROM profiles p
+    WHERE p.auth_user_id = auth.uid()
+      AND p.status = 'active'
+      AND p.role IN ('super_admin', 'program_admin')
+  );
+$$;
+
+-- Read policies for all authenticated users
+DROP POLICY IF EXISTS "auth_read_sub_process_areas" ON sub_process_areas;
+CREATE POLICY "auth_read_sub_process_areas" ON sub_process_areas FOR SELECT TO authenticated USING (true);
+DROP POLICY IF EXISTS "admin_write_sub_process_areas" ON sub_process_areas;
+CREATE POLICY "admin_write_sub_process_areas" ON sub_process_areas FOR ALL TO authenticated USING (is_pumma_reference_admin()) WITH CHECK (is_pumma_reference_admin());
+
+DROP POLICY IF EXISTS "auth_read_assessment_type_questions" ON assessment_type_questions;
+CREATE POLICY "auth_read_assessment_type_questions" ON assessment_type_questions FOR SELECT TO authenticated USING (true);
+DROP POLICY IF EXISTS "admin_write_assessment_type_questions" ON assessment_type_questions;
+CREATE POLICY "admin_write_assessment_type_questions" ON assessment_type_questions FOR ALL TO authenticated USING (is_pumma_reference_admin()) WITH CHECK (is_pumma_reference_admin());
+
+DROP POLICY IF EXISTS "auth_read_question_instruction_guides" ON question_instruction_guides;
+CREATE POLICY "auth_read_question_instruction_guides" ON question_instruction_guides FOR SELECT TO authenticated USING (true);
+DROP POLICY IF EXISTS "admin_write_question_instruction_guides" ON question_instruction_guides;
+CREATE POLICY "admin_write_question_instruction_guides" ON question_instruction_guides FOR ALL TO authenticated USING (is_pumma_reference_admin()) WITH CHECK (is_pumma_reference_admin());
+
+DROP POLICY IF EXISTS "auth_read_question_evidence_guides" ON question_evidence_guides;
+CREATE POLICY "auth_read_question_evidence_guides" ON question_evidence_guides FOR SELECT TO authenticated USING (true);
+DROP POLICY IF EXISTS "admin_write_question_evidence_guides" ON question_evidence_guides;
+CREATE POLICY "admin_write_question_evidence_guides" ON question_evidence_guides FOR ALL TO authenticated USING (is_pumma_reference_admin()) WITH CHECK (is_pumma_reference_admin());
+
+DROP POLICY IF EXISTS "auth_read_question_maturity_guides" ON question_maturity_guides;
+CREATE POLICY "auth_read_question_maturity_guides" ON question_maturity_guides FOR SELECT TO authenticated USING (true);
+DROP POLICY IF EXISTS "admin_write_question_maturity_guides" ON question_maturity_guides;
+CREATE POLICY "admin_write_question_maturity_guides" ON question_maturity_guides FOR ALL TO authenticated USING (is_pumma_reference_admin()) WITH CHECK (is_pumma_reference_admin());
+
+GRANT SELECT ON question_expert_guidance TO authenticated;
+
+-- Replace legacy unrestricted write policies on reference data.
+-- Read access remains available to authenticated users; writes require reference-admin privileges.
+DO $$
+DECLARE
+  ref_table text;
+  policy_name text;
+BEGIN
+  FOREACH ref_table IN ARRAY ARRAY[
+    'evaluation_types', 'domains', 'processes', 'maturity_models',
+    'maturity_levels', 'maturity_statements', 'questionnaires',
+    'questions', 'alert_rules'
+  ]
+  LOOP
+    FOREACH policy_name IN ARRAY ARRAY[
+      'auth_insert_' || ref_table,
+      'auth_update_' || ref_table,
+      'auth_delete_' || ref_table
+    ]
+    LOOP
+      EXECUTE format('DROP POLICY IF EXISTS %I ON %I', policy_name, ref_table);
+    END LOOP;
+
+    EXECUTE format('DROP POLICY IF EXISTS %I ON %I', 'admin_write_' || ref_table, ref_table);
+    EXECUTE format(
+      'CREATE POLICY %I ON %I FOR ALL TO authenticated USING (is_pumma_reference_admin()) WITH CHECK (is_pumma_reference_admin())',
+      'admin_write_' || ref_table,
+      ref_table
+    );
+  END LOOP;
+END $$;
+
+ALTER VIEW question_expert_guidance SET (security_invoker = true);

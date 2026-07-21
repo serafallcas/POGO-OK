@@ -1,0 +1,17 @@
+MODE D'EMPLOI BOLT — VERSION FRANÇAISE
+=======================================
+
+1. Ouvrir le projet existant dans BOLT.
+2. Ajouter 01_BOLT_MASTER_PROMPT_MIN_TOKENS.txt comme instruction initiale.
+3. Ajouter ensuite bolt_steps/01_FOUNDATION_AND_CLEANUP.txt.
+4. Faire appliquer et tester chaque étape avant de fournir la suivante.
+5. Pour la base, fournir les fichiers database_txt sans les reformater.
+6. Pour les données, préférer data_by_domain afin de limiter le contexte.
+7. Pour une correction précise de code, fournir le fichier correspondant sous
+   source_code_txt; la première ligne indique le chemin cible exact.
+8. Ne pas demander à BOLT de réinventer les guides : il doit importer les objets.
+9. À la fin, exécuter 09_ACCEPTANCE_TESTS.txt et corriger les écarts résiduels.
+
+Deux modes de chargement sont possibles :
+- Seed SQL complet : rapide pour une base vide ou maîtrisée.
+- Import JSON par domaine : préférable pour un import applicatif idempotent.
