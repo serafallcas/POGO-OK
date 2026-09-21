@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
 import { supabase } from '../lib/supabase';
+import { useAuth } from '../contexts/AuthContext';
 import Papa from 'papaparse';
 import { Upload, FileText, CheckCircle, XCircle, AlertCircle, Download } from 'lucide-react';
 
@@ -17,7 +18,7 @@ const COLUMN_MAPS: Record<TableName, Record<string, string>> = {
 
 const CONFLICT_KEYS: Record<TableName, string> = {
   evaluation_types: 'code', domains: 'code', processes: 'code', questions: 'question_code',
-  maturity_models: 'code', maturity_statements: 'id',
+  maturity_models: 'code', maturity_statements: 'maturity_model_id,process_area',
 };
 
 interface ImportResult { imported: number; skipped: number; errors: string[]; }
@@ -92,6 +93,7 @@ async function resolveRow(table: TableName, row: Record<string, unknown>): Promi
 }
 
 export default function ImportCenter() {
+  const { isAdmin } = useAuth();
   const [table, setTable] = useState<TableName>('evaluation_types');
   const [file, setFile] = useState<File | null>(null);
   const [rawData, setRawData] = useState<Record<string, unknown>[]>([]);
@@ -289,9 +291,10 @@ export default function ImportCenter() {
               Dry Run (validate without writing)
             </label>
           </div>
-          <button onClick={handleImport} disabled={importing} className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 disabled:opacity-50 flex items-center gap-2">
+          <button onClick={handleImport} disabled={importing || !isAdmin} className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 disabled:opacity-50 flex items-center gap-2">
             {importing ? 'Importing...' : (dryRun ? 'Validate' : 'Start Import')} <Upload className="w-4 h-4" />
           </button>
+          {!isAdmin && <p className="text-xs text-amber-600">Only administrators can import data.</p>}
           {importing && (
             <div className="w-full bg-gray-200 rounded-full h-2.5">
               <div className="bg-blue-600 h-2.5 rounded-full transition-all" style={{ width: `${progress}%` }} />

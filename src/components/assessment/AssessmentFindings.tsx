@@ -75,6 +75,7 @@ export default function AssessmentFindings({ assessmentId }: { assessmentId: str
   const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
   const [showGenerateModal, setShowGenerateModal] = useState(false);
   const [generating, setGenerating] = useState(false);
+  const [generatedCount, setGeneratedCount] = useState<number | null>(null);
 
   const fetchFindings = useCallback(async () => {
     setLoading(true);
@@ -130,9 +131,18 @@ export default function AssessmentFindings({ assessmentId }: { assessmentId: str
 
   async function generatePotentialFindings() {
     setGenerating(true);
+    setGeneratedCount(null);
+
+    const { data: assessmentData } = await supabase
+      .from('assessments')
+      .select('target_maturity_score')
+      .eq('id', assessmentId)
+      .maybeSingle();
+    const targetScore = assessmentData?.target_maturity_score ?? 3;
+
     const { data: responses } = await supabase
       .from('assessment_responses')
-      .select('id, question_id, score, questions(code, target_score)')
+      .select('id, question_id, score, questions(question_code)')
       .eq('assessment_id', assessmentId);
 
     if (!responses || responses.length === 0) {
@@ -154,11 +164,10 @@ export default function AssessmentFindings({ assessmentId }: { assessmentId: str
 
     let generated = 0;
     for (const resp of responses as any[]) {
-      const questionCode = resp.questions?.code;
+      const questionCode = resp.questions?.question_code;
       if (!questionCode) continue;
 
       const score = resp.score ?? 0;
-      const targetScore = resp.questions?.target_score ?? 3;
       const gap = targetScore - score;
 
       const shouldTrigger = score <= 2 || gap >= 2;
@@ -198,6 +207,7 @@ export default function AssessmentFindings({ assessmentId }: { assessmentId: str
 
     setGenerating(false);
     setShowGenerateModal(false);
+    setGeneratedCount(generated);
     fetchFindings();
   }
 
@@ -247,6 +257,16 @@ export default function AssessmentFindings({ assessmentId }: { assessmentId: str
           </button>
         </div>
       </div>
+
+      {/* Generation feedback */}
+      {generatedCount !== null && (
+        <div className={`rounded-lg border p-3 text-sm flex items-center gap-2 ${generatedCount > 0 ? 'bg-emerald-50 border-emerald-200 text-emerald-700' : 'bg-gray-50 border-gray-200 text-gray-600'}`}>
+          <CheckCircle2 className="w-4 h-4 flex-shrink-0" />
+          {generatedCount > 0
+            ? `${generatedCount} potential finding${generatedCount !== 1 ? 's' : ''} generated from scored responses.`
+            : 'No new findings generated (no matching templates or all already exist).'}
+        </div>
+      )}
 
       {/* Status pills */}
       <div className="flex flex-wrap gap-1.5">

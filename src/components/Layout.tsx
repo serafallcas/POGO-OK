@@ -14,6 +14,8 @@ const NAV_SECTIONS = [
       { name: 'Dashboard', path: '/', icon: LayoutDashboard },
       { name: 'Assessments', path: '/assessments', icon: ClipboardCheck },
       { name: 'Findings & Actions', path: '/findings', icon: Search },
+      { name: 'Alerts', path: '/alerts', icon: ListChecks },
+      { name: 'Action Plans', path: '/action-plans', icon: Library },
     ],
   },
   {

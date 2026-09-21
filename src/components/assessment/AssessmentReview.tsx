@@ -164,7 +164,15 @@ export default function AssessmentReview({ assessmentId, assessment }: Props) {
                   <p className="text-sm font-semibold text-emerald-700">All gates passed!</p>
                   <p className="text-xs text-emerald-600">The assessment is ready for final closure.</p>
                 </div>
-                <button className="px-4 py-2 bg-emerald-600 text-white text-sm font-medium rounded-lg hover:bg-emerald-700">
+                <button
+                  onClick={async () => {
+                    await supabase
+                      .from('assessments')
+                      .update({ status: 'closed', approved_at: new Date().toISOString() })
+                      .eq('id', assessmentId);
+                    window.location.reload();
+                  }}
+                  className="px-4 py-2 bg-emerald-600 text-white text-sm font-medium rounded-lg hover:bg-emerald-700">
                   Close Assessment
                 </button>
               </div>

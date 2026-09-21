@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Plus, Pencil, Search, ToggleLeft, ToggleRight, Grid3X3 } from 'lucide-react';
 import { supabase } from '../lib/supabase';
+import { useAuth } from '../contexts/AuthContext';
 
 interface EvaluationType {
   id: string;
@@ -35,6 +36,7 @@ const defaultFormData: FormData = {
 };
 
 export default function Domains() {
+  const { isAdmin } = useAuth();
   const [domains, setDomains] = useState<Domain[]>([]);
   const [evaluationTypes, setEvaluationTypes] = useState<EvaluationType[]>([]);
   const [loading, setLoading] = useState(true);
@@ -186,13 +188,15 @@ export default function Domains() {
             </option>
           ))}
         </select>
-        <button
-          onClick={openAddModal}
-          className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors font-medium"
-        >
-          <Plus className="h-4 w-4" />
-          Add Domain
-        </button>
+        {isAdmin && (
+          <button
+            onClick={openAddModal}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors font-medium"
+          >
+            <Plus className="h-4 w-4" />
+            Add Domain
+          </button>
+        )}
       </div>
 
       {/* Table */}
@@ -244,26 +248,32 @@ export default function Domains() {
                       )}
                     </td>
                     <td className="px-6 py-4 text-center">
-                      <button
-                        onClick={() => toggleActive(item)}
-                        className="inline-flex items-center"
-                        title={item.is_active ? 'Deactivate' : 'Activate'}
-                      >
-                        {item.is_active ? (
-                          <ToggleRight className="h-6 w-6 text-emerald-600" />
-                        ) : (
-                          <ToggleLeft className="h-6 w-6 text-slate-300" />
-                        )}
-                      </button>
+                      {isAdmin ? (
+                        <button
+                          onClick={() => toggleActive(item)}
+                          className="inline-flex items-center"
+                          title={item.is_active ? 'Deactivate' : 'Activate'}
+                        >
+                          {item.is_active ? (
+                            <ToggleRight className="h-6 w-6 text-emerald-600" />
+                          ) : (
+                            <ToggleLeft className="h-6 w-6 text-slate-300" />
+                          )}
+                        </button>
+                      ) : (
+                        item.is_active ? <ToggleRight className="h-6 w-6 text-emerald-600 opacity-50" /> : <ToggleLeft className="h-6 w-6 text-slate-300 opacity-50" />
+                      )}
                     </td>
                     <td className="px-6 py-4 text-center">
-                      <button
-                        onClick={() => openEditModal(item)}
-                        className="inline-flex items-center gap-1 px-3 py-1.5 text-sm text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-md transition-colors"
-                      >
-                        <Pencil className="h-3.5 w-3.5" />
-                        Edit
-                      </button>
+                      {isAdmin && (
+                        <button
+                          onClick={() => openEditModal(item)}
+                          className="inline-flex items-center gap-1 px-3 py-1.5 text-sm text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-md transition-colors"
+                        >
+                          <Pencil className="h-3.5 w-3.5" />
+                          Edit
+                        </button>
+                      )}
                     </td>
                   </tr>
                 ))

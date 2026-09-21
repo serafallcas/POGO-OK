@@ -15,6 +15,7 @@ import ImportCenter from './pages/ImportCenter';
 import Findings from './pages/Findings';
 import ActionPlans from './pages/ActionPlans';
 import Reports from './pages/Reports';
+import Alerts from './pages/Alerts';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { user, loading } = useAuth();
@@ -71,6 +72,7 @@ function AppRoutes() {
         <Route path="import" element={<ImportCenter />} />
         <Route path="findings" element={<Findings />} />
         <Route path="action-plans" element={<ActionPlans />} />
+        <Route path="alerts" element={<Alerts />} />
         <Route path="reports" element={<Reports />} />
       </Route>
     </Routes>

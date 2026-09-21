@@ -152,7 +152,8 @@ export default function Dashboard() {
         const { data: respData } = await supabase
           .from('assessment_responses')
           .select('score, question_id, questions!inner(domain_id)')
-          .not('score', 'is', null);
+          .not('score', 'is', null)
+          .eq('review_status', 'validated');
 
         const domainScoreMap: Record<string, { total: number; count: number }> = {};
         (respData || []).forEach((r: any) => {

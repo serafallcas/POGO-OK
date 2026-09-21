@@ -51,7 +51,8 @@ export default function Reports() {
     const { data: responses } = await supabase
       .from('assessment_responses')
       .select('*, questions(question_text, domain_id)')
-      .eq('assessment_id', selectedAssessment);
+      .eq('assessment_id', selectedAssessment)
+      .eq('review_status', 'validated');
 
     if (responses && responses.length > 0) {
       const byDomain: Record<string, { scores: number[]; target: number }> = {};
