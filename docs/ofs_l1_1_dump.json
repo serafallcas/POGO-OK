@@ -1,0 +1,315 @@
+{
+  "_generated": "2026-09-24 — read-only diagnostic dump for OFS L1.1 content verification",
+  "questions": [
+    {
+      "question_code": "ofs_l3_1_3_1",
+      "question_text": "How mature is the organization's process for building and approving field/asset development plans integrating subsurface, drilling, facilities and economics?",
+      "question_intent": "Assess whether development plans are produced through a structured, cross-disciplinary, approved process, versus an informal document assembled by a single discipline.",
+      "instruction_text": "Review the development plan template/standard, evidence of cross-functional input (subsurface, drilling, facilities, finance, HSE), and the formal approval/sign-off record.",
+      "evidence_examples": "Development plan document and template; cross-functional review comments; management approval record; plan revision history.",
+      "alert_rule_hint": "Flag if the current development plan has no documented cross-functional review or approval date.",
+      "sort_order": 1
+    },
+    {
+      "question_code": "ofs_l3_1_1_1",
+      "question_text": "How mature is the organization's process for planning and executing seismic data acquisition campaigns (2D/3D/4D, land or marine crews and subcontractors)?",
+      "question_intent": "Assess whether seismic acquisition is run as a controlled, permitted, safety-managed operation with defined technical specifications, rather than an ad hoc field activity driven solely by the crew contractor.",
+      "instruction_text": "Review the acquisition program design (source/receiver geometry, fold, bin size), the permitting and HSE clearance trail, and how field QC (near-real-time noise/coverage monitoring) feeds back into acquisition parameters during the survey.",
+      "evidence_examples": "Acquisition design report; land/marine access permits and HSE clearances; daily field QC/observer reports; source and receiver test records; final acquisition report vs. program.",
+      "alert_rule_hint": "Flag if surveys are routinely executed without a documented acquisition design or without any field QC/observer sign-off trail.",
+      "sort_order": 1
+    },
+    {
+      "question_code": "ofs_l3_1_3_2",
+      "question_text": "How mature is the organization's management of laboratory services (core analysis, fluid PVT, geochemistry) supporting subsurface evaluation?",
+      "question_intent": "Determine whether lab services are quality-managed (accreditation, chain of custody, QC) or operate without traceable quality controls.",
+      "instruction_text": "Review lab accreditation/certification status, sample chain-of-custody records, and QC/calibration logs for lab equipment (internal lab or subcontracted).",
+      "evidence_examples": "Lab accreditation certificate; chain-of-custody forms; QC/calibration logs; lab results sign-off records.",
+      "alert_rule_hint": "Flag if sample chain of custody cannot be reconstructed from receipt to reported result.",
+      "sort_order": 2
+    },
+    {
+      "question_code": "ofs_l3_1_1_2",
+      "question_text": "How mature is the organization's process for performing reservoir imaging (velocity model building, migration, inversion) and ensuring quality of the resulting subsurface image?",
+      "question_intent": "Assess whether imaging workflows follow a controlled sequence with documented QC (especially well-tie validation), rather than being a black-box vendor deliverable.",
+      "instruction_text": "Review the imaging workflow documentation, velocity model build/update records, migration algorithm selection rationale, and well-tie QC reports for the most recent imaging project.",
+      "evidence_examples": "Velocity model iterations; migration/inversion parameter logs; well-tie QC reports; imaging sign-off memo.",
+      "alert_rule_hint": "Flag if imaged volumes are delivered without a documented well-tie or velocity QC step.",
+      "sort_order": 2
+    },
+    {
+      "question_code": "ofs_l3_1_1_3",
+      "question_text": "How mature is the organization's governance of seismic data assets (raw, processed, interpreted) across their lifecycle?",
+      "question_intent": "Assess whether seismic data is catalogued, versioned and access-controlled, avoiding loss, duplication or use of superseded volumes.",
+      "instruction_text": "Review the seismic data management system/catalogue, versioning conventions, license/ownership tracking for licensed or multi-client data, and backup/archival policy.",
+      "evidence_examples": "Seismic data catalogue export; data license register; backup/archival logs; naming/versioning standard document.",
+      "alert_rule_hint": "Flag if there is no central catalogue and staff locate seismic volumes via personal folders or memory.",
+      "sort_order": 3
+    },
+    {
+      "question_code": "ofs_l3_1_3_3",
+      "question_text": "How mature is the organization's process for delivering and controlling the quality of internal/external technical advisory input to E&P decisions?",
+      "question_intent": "Assess whether advisory input (internal experts or external consultants) is scoped, documented and tracked to decisions, versus informal, undocumented advice.",
+      "instruction_text": "Review advisory engagement terms of reference, deliverable documentation, and traceability between advisory recommendations and subsequent decisions.",
+      "evidence_examples": "Advisory engagement scope/contract; advisory deliverable/report; decision record referencing advisory input.",
+      "alert_rule_hint": "Flag if significant technical decisions reference undocumented or unattributed advisory input.",
+      "sort_order": 3
+    },
+    {
+      "question_code": "ofs_l3_1_3_4",
+      "question_text": "How mature is the organization's coordination of the broader set of reservoir engineering services (well test analysis, material balance, production forecasting) supporting field management?",
+      "question_intent": "Assess whether reservoir services are delivered through a coordinated, documented workflow linked to field management decisions, rather than isolated one-off analyses.",
+      "instruction_text": "Review the reservoir services work program, linkage of well test/material balance outputs to production forecasts, and how forecasts are reconciled against actual production.",
+      "evidence_examples": "Reservoir services work program; well test/material balance reports; production forecast vs. actual reconciliation.",
+      "alert_rule_hint": "Flag if production forecasts are not periodically reconciled against actual production data.",
+      "sort_order": 4
+    },
+    {
+      "question_code": "ofs_l3_1_1_4",
+      "question_text": "How mature is the organization's process for building, running and controlling reservoir simulation models used to support development decisions?",
+      "question_intent": "Determine whether simulation models are version-controlled, history-matched and validated before being used for decisions, versus used as unchecked black boxes.",
+      "instruction_text": "Review model build documentation, history-match reports, sensitivity/uncertainty runs, and the approval step before a model is used to support a business decision.",
+      "evidence_examples": "Model documentation report; history-match QC package; run log/version register; decision memo referencing simulation output.",
+      "alert_rule_hint": "Flag if simulation outputs feed investment decisions without a documented history-match or peer review.",
+      "sort_order": 4
+    },
+    {
+      "question_code": "ofs_l3_1_1_5",
+      "question_text": "How mature is the organization's control over seismic data processing (in-house or subcontracted), from raw field data to final processed volume?",
+      "question_intent": "Assess whether processing sequences and parameters are specified, QC'd and signed off, rather than accepted as delivered from a vendor without review.",
+      "instruction_text": "Review the processing flow specification, intermediate QC checkpoints, and the final acceptance/sign-off record against the contracted specification.",
+      "evidence_examples": "Processing sequence/parameter document; intermediate QC reports; vendor deliverable acceptance sign-off; processing contract specification.",
+      "alert_rule_hint": "Flag if processed volumes are accepted without comparing deliverables against the contracted processing specification.",
+      "sort_order": 5
+    },
+    {
+      "question_code": "ofs_l3_1_1_6",
+      "question_text": "How mature is the organization's process for translating subsurface interpretation into reserves estimates and economic evaluations?",
+      "question_intent": "Determine whether reserves/economics work follows a controlled, auditable methodology consistent with recognized standards (e.g., SPE-PRMS), versus informal spreadsheet-based estimates.",
+      "instruction_text": "Review the reserves estimation methodology document, the economic model assumptions register (price deck, cost basis), and the internal/external audit trail for reserves bookings.",
+      "evidence_examples": "Reserves estimation methodology; economic model assumption register; reserves audit report; sign-off record for reserves bookings.",
+      "alert_rule_hint": "Flag if reserves figures used externally have no traceable link to an approved estimation methodology or audit.",
+      "sort_order": 6
+    },
+    {
+      "question_code": "ofs_l3_1_1_7",
+      "question_text": "How mature is the organization's overall survey management (scope definition, contractor selection, mobilization/demobilization, HSE oversight) for seismic surveys?",
+      "question_intent": "Assess whether survey execution is managed as a project with defined scope, budget, schedule and HSE oversight, rather than delegated wholesale to the contractor.",
+      "instruction_text": "Review the survey scope of work, contractor selection/evaluation records, mobilization plan, and HSE incident/near-miss tracking specific to the survey.",
+      "evidence_examples": "Survey scope of work; contractor bid evaluation; mobilization/demobilization plan; survey HSE statistics.",
+      "alert_rule_hint": "Flag if survey HSE performance is not tracked separately from general company HSE statistics.",
+      "sort_order": 7
+    },
+    {
+      "question_code": "ofs_l3_1_1_8",
+      "question_text": "How mature is the organization's process for conducting integrated geophysical studies (gravity, magnetics, EM, multi-attribute analysis) beyond core seismic imaging?",
+      "question_intent": "Determine whether geophysical studies are scoped against a specific technical question with documented conclusions, or performed opportunistically without a clear deliverable.",
+      "instruction_text": "Review study terms of reference, integration of geophysical results with geological/petrophysical data, and the study close-out report.",
+      "evidence_examples": "Study terms of reference; integrated interpretation report; peer review comments; study close-out/recommendations memo.",
+      "alert_rule_hint": "Flag if geophysical studies are commissioned without a documented terms of reference defining the question to be answered.",
+      "sort_order": 8
+    },
+    {
+      "question_code": "ofs_l3_1_1_9",
+      "question_text": "How mature is the organization's use of remote sensing data (satellite imagery, aeromagnetic/aerogravity surveys) to support exploration and site planning?",
+      "question_intent": "Assess whether remote sensing data is systematically integrated into planning workflows or used only sporadically on an individual analyst's initiative.",
+      "instruction_text": "Review how remote sensing datasets are sourced, archived, and integrated with site planning, environmental baseline and exploration targeting workflows.",
+      "evidence_examples": "Remote sensing data inventory; integration reports with exploration/site-planning workflows; environmental baseline studies referencing remote sensing data.",
+      "alert_rule_hint": "Flag if remote sensing data used for environmental baselining is not archived or traceable to a source/date.",
+      "sort_order": 9
+    },
+    {
+      "question_code": "ofs_l3_1_1_10",
+      "question_text": "How mature is the organization's end-to-end quality control of the final seismic imaging product delivered to interpreters and decision-makers?",
+      "question_intent": "Distinguish this from 'Perform reservoir imaging' (technical workflow) by focusing on the governance step: formal acceptance, distribution control and versioning of the final imaged product used across the organization.",
+      "instruction_text": "Review the final imaging product acceptance checklist, distribution list/access control, and the linkage between the accepted version and downstream interpretation projects.",
+      "evidence_examples": "Final product acceptance checklist; distribution/access log; interpretation project references to a specific imaging version.",
+      "alert_rule_hint": "Flag if more than one 'final' version of an imaged volume circulates without a clear designation of the authoritative version.",
+      "sort_order": 10
+    }
+  ],
+  "maturity_statements": [
+    {
+      "process_area": "ofs_l3_1_3_1",
+      "level_1_basic": "Development plans are informal, produced by one discipline with no cross-functional input.",
+      "level_2_developing": "A basic template exists; cross-functional input is sought inconsistently.",
+      "level_3_established": "A documented process requires cross-functional review and management approval for every development plan.",
+      "level_4_advanced": "Development plans are revisited on a defined cadence and revised based on new data/performance, with tracked revision history.",
+      "level_5_leading": "Development planning is integrated with portfolio and economic optimization tools, with scenario/sensitivity analysis routinely informing plan revisions.",
+      "assessor_instruction": "Request the approval record for the current development plan and confirm all required disciplines signed prior to approval date.",
+      "evidence_examples": "Development plan document and template; cross-functional review comments; management approval record; plan revision history.",
+      "review_steps": "Verify the plan's revision history shows updates tied to specific triggers (new well data, price changes, performance review).",
+      "alert_rule_hint": "Flag if the current development plan has no documented cross-functional review or approval date.",
+      "sort_order": 1
+    },
+    {
+      "process_area": "ofs_l3_1_1_1",
+      "level_1_basic": "Acquisition is subcontracted with minimal specification; there is no documented acquisition design and field QC is verbal/ad hoc.",
+      "level_2_developing": "A basic acquisition design (geometry, fold) is produced per survey, but permitting/HSE clearance and field QC records are inconsistently kept.",
+      "level_3_established": "Acquisition design, permitting and field QC are documented and approved for every survey, following an internal standard.",
+      "level_4_advanced": "Acquisition parameters are actively adjusted mid-survey based on real-time QC data, and post-survey performance (fold, S/N, cost vs. budget) is systematically reviewed against the design.",
+      "level_5_leading": "Acquisition planning integrates lessons learned and rock-physics/imaging feedback across campaigns, with predictive parameter optimization and continuous benchmarking of crew/contractor performance.",
+      "assessor_instruction": "Request the last three acquisition design reports and match them against field QC logs and the final acquisition report; confirm sign-off dates precede mobilization.",
+      "evidence_examples": "Acquisition design report; land/marine access permits and HSE clearances; daily field QC/observer reports; source and receiver test records; final acquisition report vs. program.",
+      "review_steps": "Confirm existence of design→permit→field QC→close-out report chain; sample one survey end to end; check for design deviations that were never re-approved.",
+      "alert_rule_hint": "Flag if surveys are routinely executed without a documented acquisition design or without any field QC/observer sign-off trail.",
+      "sort_order": 1
+    },
+    {
+      "process_area": "ofs_l3_1_3_2",
+      "level_1_basic": "Lab work is commissioned with no chain-of-custody records or quality certification requirement.",
+      "level_2_developing": "Some chain-of-custody documentation exists but is incomplete or inconsistently applied.",
+      "level_3_established": "Chain of custody, QC/calibration and accreditation requirements are documented and enforced for all lab work.",
+      "level_4_advanced": "Lab performance (turnaround, QC pass rate, inter-lab comparison) is tracked and used in vendor selection.",
+      "level_5_leading": "Laboratory quality management is integrated into an organization-wide data quality program, with continuous inter-laboratory benchmarking.",
+      "assessor_instruction": "Request the chain-of-custody record for a recent core/fluid sample and trace it from field collection to final lab report.",
+      "evidence_examples": "Lab accreditation certificate; chain-of-custody forms; QC/calibration logs; lab results sign-off records.",
+      "review_steps": "Confirm lab accreditation certificates are current and cover the specific analyses being relied upon.",
+      "alert_rule_hint": "Flag if sample chain of custody cannot be reconstructed from receipt to reported result.",
+      "sort_order": 2
+    },
+    {
+      "process_area": "ofs_l3_1_1_2",
+      "level_1_basic": "Imaging is outsourced with no internal review of velocity models or well ties.",
+      "level_2_developing": "Velocity models exist but updates are undocumented; well-tie QC is occasional.",
+      "level_3_established": "A standard workflow (velocity build → migration → well-tie QC → sign-off) is documented and followed.",
+      "level_4_advanced": "Imaging quality metrics (well-tie residuals, resolution) are tracked over time and used to select algorithms/vendors.",
+      "level_5_leading": "Imaging workflows are continuously benchmarked, with feedback loops from drilling results used to refine velocity models for future campaigns.",
+      "assessor_instruction": "Ask for the well-tie QC report for the most recent imaging project and confirm it was reviewed before the volume was released to interpreters.",
+      "evidence_examples": "Velocity model iterations; migration/inversion parameter logs; well-tie QC reports; imaging sign-off memo.",
+      "review_steps": "Trace one imaging deliverable from raw processed volume to sign-off; verify well-tie residual is documented and within stated tolerance.",
+      "alert_rule_hint": "Flag if imaged volumes are delivered without a documented well-tie or velocity QC step.",
+      "sort_order": 2
+    },
+    {
+      "process_area": "ofs_l3_1_1_3",
+      "level_1_basic": "Seismic volumes are stored on individual workstations/shared drives with no catalogue or version control.",
+      "level_2_developing": "A shared repository exists but cataloguing is incomplete and versioning is informal.",
+      "level_3_established": "A documented catalogue with versioning, licensing status and access rights is maintained and kept current.",
+      "level_4_advanced": "Data management is audited periodically; usage/access is logged and license compliance is actively monitored.",
+      "level_5_leading": "Seismic data governance is integrated with the broader subsurface data management strategy, with automated lifecycle policies (archival, purge, license expiry alerts).",
+      "assessor_instruction": "Request an export of the seismic catalogue and cross-check three volumes against physical/electronic storage to confirm accuracy.",
+      "evidence_examples": "Seismic data catalogue export; data license register; backup/archival logs; naming/versioning standard document.",
+      "review_steps": "Verify catalogue completeness against a sample of known surveys; check license expiry tracking for at least one multi-client dataset.",
+      "alert_rule_hint": "Flag if there is no central catalogue and staff locate seismic volumes via personal folders or memory.",
+      "sort_order": 3
+    },
+    {
+      "process_area": "ofs_l3_1_3_3",
+      "level_1_basic": "Advisory input is informal and undocumented; no scope or deliverable trail exists.",
+      "level_2_developing": "Formal engagements exist for major consultants but internal advisory input is not documented.",
+      "level_3_established": "All significant advisory engagements (internal or external) have a documented scope and deliverable, referenced in decisions.",
+      "level_4_advanced": "Advisory input quality/value is periodically assessed against decision outcomes.",
+      "level_5_leading": "Advisory sourcing is optimized through a maintained registry of internal/external expertise with performance tracking and knowledge capture.",
+      "assessor_instruction": "Ask for the terms of reference and deliverable of the most recent significant advisory engagement and confirm it is referenced in a decision record.",
+      "evidence_examples": "Advisory engagement scope/contract; advisory deliverable/report; decision record referencing advisory input.",
+      "review_steps": "Trace one major technical decision back to the advisory input that supported it.",
+      "alert_rule_hint": "Flag if significant technical decisions reference undocumented or unattributed advisory input.",
+      "sort_order": 3
+    },
+    {
+      "process_area": "ofs_l3_1_3_4",
+      "level_1_basic": "Reservoir services are performed reactively with no coordinated work program.",
+      "level_2_developing": "A work program exists but forecast-vs-actual reconciliation is infrequent or undocumented.",
+      "level_3_established": "A documented work program coordinates reservoir services, with regular forecast reconciliation against actuals.",
+      "level_4_advanced": "Forecast accuracy trends are tracked and used to refine reservoir models and service prioritization.",
+      "level_5_leading": "Reservoir services are fully integrated with production surveillance and asset planning, with predictive analytics driving proactive interventions.",
+      "assessor_instruction": "Ask for the latest production forecast reconciliation report and confirm variance analysis was documented and acted upon.",
+      "evidence_examples": "Reservoir services work program; well test/material balance reports; production forecast vs. actual reconciliation.",
+      "review_steps": "Confirm the reservoir services work program is reviewed and updated on a defined cadence (e.g., quarterly).",
+      "alert_rule_hint": "Flag if production forecasts are not periodically reconciled against actual production data.",
+      "sort_order": 4
+    },
+    {
+      "process_area": "ofs_l3_1_1_4",
+      "level_1_basic": "Simulation models are built ad hoc with no documentation or history-match evidence.",
+      "level_2_developing": "Models are documented but history-matching and peer review are inconsistent.",
+      "level_3_established": "A standard model-build and history-match/QC process is documented and applied before model use.",
+      "level_4_advanced": "Uncertainty/sensitivity analysis is routinely performed and version history of the model is fully traceable.",
+      "level_5_leading": "Simulation practice is benchmarked and continuously improved using production surveillance feedback, with automated history-match tooling.",
+      "assessor_instruction": "Ask for the history-match report of the model currently used for the active field development plan and confirm it was peer-reviewed.",
+      "evidence_examples": "Model documentation report; history-match QC package; run log/version register; decision memo referencing simulation output.",
+      "review_steps": "Confirm model version referenced in the latest development decision matches an approved, dated history-match package.",
+      "alert_rule_hint": "Flag if simulation outputs feed investment decisions without a documented history-match or peer review.",
+      "sort_order": 4
+    },
+    {
+      "process_area": "ofs_l3_1_1_5",
+      "level_1_basic": "Processing is fully outsourced with no internal specification or QC of deliverables.",
+      "level_2_developing": "A basic specification exists but intermediate QC checkpoints are rarely reviewed internally.",
+      "level_3_established": "Processing flow, QC checkpoints and final acceptance are documented and followed for every project.",
+      "level_4_advanced": "Processing performance (turnaround, QC metrics) is tracked across vendors/projects and used in vendor selection.",
+      "level_5_leading": "Processing parameter libraries and QC benchmarks are continuously refined from project experience, with reprocessing decisions driven by quantified imaging uplift.",
+      "assessor_instruction": "Request the QC sign-off record for the last processing project and verify it references the contracted specification.",
+      "evidence_examples": "Processing sequence/parameter document; intermediate QC reports; vendor deliverable acceptance sign-off; processing contract specification.",
+      "review_steps": "Sample one processing deliverable and confirm each contracted QC checkpoint has a corresponding signed record.",
+      "alert_rule_hint": "Flag if processed volumes are accepted without comparing deliverables against the contracted processing specification.",
+      "sort_order": 5
+    },
+    {
+      "process_area": "ofs_l3_1_1_6",
+      "level_1_basic": "Reserves/economics are estimated informally with no documented methodology or assumption register.",
+      "level_2_developing": "A methodology exists but is applied inconsistently; assumptions are not centrally tracked.",
+      "level_3_established": "A documented, PRMS-aligned methodology is applied consistently, with a maintained assumption register and sign-off.",
+      "level_4_advanced": "Reserves estimates undergo periodic independent audit and variance analysis against actuals.",
+      "level_5_leading": "Reserves/economics processes are continuously calibrated against production and price outcomes, with full traceability from raw data to booked reserves.",
+      "assessor_instruction": "Ask for the most recent reserves audit report and confirm findings were tracked to closure.",
+      "evidence_examples": "Reserves estimation methodology; economic model assumption register; reserves audit report; sign-off record for reserves bookings.",
+      "review_steps": "Trace one reserves category booking back to its supporting interpretation and assumption set.",
+      "alert_rule_hint": "Flag if reserves figures used externally have no traceable link to an approved estimation methodology or audit.",
+      "sort_order": 6
+    },
+    {
+      "process_area": "ofs_l3_1_1_7",
+      "level_1_basic": "Survey scope is loosely defined and contractor performance is not tracked.",
+      "level_2_developing": "A scope of work exists but contractor evaluation and HSE tracking are inconsistent across surveys.",
+      "level_3_established": "Scope, contractor selection criteria and HSE oversight are documented and applied for every survey.",
+      "level_4_advanced": "Survey performance (cost, schedule, HSE, data quality) is tracked and benchmarked across contractors and campaigns.",
+      "level_5_leading": "Survey management practices are continuously improved through structured lessons-learned and contractor performance scorecards feeding procurement decisions.",
+      "assessor_instruction": "Request the contractor evaluation scorecard for the last two surveys and check whether scores influenced contractor selection.",
+      "evidence_examples": "Survey scope of work; contractor bid evaluation; mobilization/demobilization plan; survey HSE statistics.",
+      "review_steps": "Confirm HSE statistics are logged per survey and reviewed in a close-out meeting with documented minutes.",
+      "alert_rule_hint": "Flag if survey HSE performance is not tracked separately from general company HSE statistics.",
+      "sort_order": 7
+    },
+    {
+      "process_area": "ofs_l3_1_1_8",
+      "level_1_basic": "Studies are performed without a defined terms of reference or documented conclusions.",
+      "level_2_developing": "Terms of reference exist for major studies only; peer review is inconsistent.",
+      "level_3_established": "All studies have a documented terms of reference, are peer-reviewed, and produce a close-out report with recommendations.",
+      "level_4_advanced": "Study recommendations are tracked to implementation and their value (e.g., risk reduction, well placement improvement) is assessed.",
+      "level_5_leading": "Geophysical study practice is integrated into an organization-wide subsurface uncertainty reduction program with tracked value delivery.",
+      "assessor_instruction": "Ask for one recent geophysical study's terms of reference and trace whether its recommendation was actioned.",
+      "evidence_examples": "Study terms of reference; integrated interpretation report; peer review comments; study close-out/recommendations memo.",
+      "review_steps": "Confirm peer review sign-off exists and recommendations are referenced in a subsequent decision document.",
+      "alert_rule_hint": "Flag if geophysical studies are commissioned without a documented terms of reference defining the question to be answered.",
+      "sort_order": 8
+    },
+    {
+      "process_area": "ofs_l3_1_1_9",
+      "level_1_basic": "Remote sensing data is used ad hoc by individuals with no archiving or documented integration.",
+      "level_2_developing": "Data is procured for specific projects but not systematically archived or reused.",
+      "level_3_established": "A documented process defines when and how remote sensing data is acquired, archived and integrated into planning.",
+      "level_4_advanced": "Remote sensing data quality and coverage are actively managed, with periodic refresh aligned to project needs.",
+      "level_5_leading": "Remote sensing is integrated into a broader geospatial data strategy with automated change-detection monitoring feeding site and environmental planning.",
+      "assessor_instruction": "Ask to see the remote sensing dataset used for the most recent site planning exercise and confirm its acquisition date and source are documented.",
+      "evidence_examples": "Remote sensing data inventory; integration reports with exploration/site-planning workflows; environmental baseline studies referencing remote sensing data.",
+      "review_steps": "Verify at least one example of remote sensing data directly informing a site-planning or exploration-targeting decision.",
+      "alert_rule_hint": "Flag if remote sensing data used for environmental baselining is not archived or traceable to a source/date.",
+      "sort_order": 9
+    },
+    {
+      "process_area": "ofs_l3_1_1_10",
+      "level_1_basic": "No formal acceptance step exists; multiple untracked versions of imaged volumes circulate.",
+      "level_2_developing": "An acceptance step exists but is applied inconsistently; version control is informal.",
+      "level_3_established": "A documented acceptance and distribution-control process ensures a single authoritative version is used downstream.",
+      "level_4_advanced": "Version usage is tracked across interpretation projects, and outdated versions are actively retired from circulation.",
+      "level_5_leading": "Imaging product governance is integrated with the seismic data management system, with automated version control and usage analytics.",
+      "assessor_instruction": "Ask two different interpreters which imaging version they are currently using and confirm both reference the same authoritative version.",
+      "evidence_examples": "Final product acceptance checklist; distribution/access log; interpretation project references to a specific imaging version.",
+      "review_steps": "Check the distribution log for the most recent 'final' volume and confirm prior versions were flagged as superseded.",
+      "alert_rule_hint": "Flag if more than one 'final' version of an imaged volume circulates without a clear designation of the authoritative version.",
+      "sort_order": 10
+    }
+  ]
+}
