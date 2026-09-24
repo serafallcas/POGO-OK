@@ -1,0 +1,177 @@
+{
+  "_generated": "2026-09-24 — read-only schema inspection for OFS questions migration planning",
+  "tables": {
+    "maturity_models": {
+      "columns": [
+        { "column_name": "id", "data_type": "uuid", "nullable": false, "default": "gen_random_uuid()" },
+        { "column_name": "code", "data_type": "text", "nullable": false, "default": null },
+        { "column_name": "label", "data_type": "text", "nullable": false, "default": null },
+        { "column_name": "description", "data_type": "text", "nullable": true, "default": null },
+        { "column_name": "domain_id", "data_type": "uuid", "nullable": true, "default": null },
+        { "column_name": "mapped_domain_id", "data_type": "text", "nullable": true, "default": null },
+        { "column_name": "mapped_domain_name", "data_type": "text", "nullable": true, "default": null },
+        { "column_name": "version", "data_type": "text", "nullable": true, "default": "'1.0'::text" },
+        { "column_name": "source_workbook", "data_type": "text", "nullable": true, "default": null },
+        { "column_name": "is_active", "data_type": "boolean", "nullable": false, "default": "true" },
+        { "column_name": "created_at", "data_type": "timestamptz", "nullable": true, "default": "now()" },
+        { "column_name": "updated_at", "data_type": "timestamptz", "nullable": true, "default": "now()" }
+      ],
+      "constraints": {
+        "primary_key": ["id"],
+        "unique": [{ "name": "maturity_models_code_key", "columns": ["code"] }],
+        "foreign_keys": [{ "name": "maturity_models_domain_id_fkey", "column": "domain_id", "references": "domains(id)" }],
+        "check": [
+          { "name": "2200_17534_1_not_null", "clause": "id IS NOT NULL" },
+          { "name": "2200_17534_2_not_null", "clause": "code IS NOT NULL" },
+          { "name": "2200_17534_3_not_null", "clause": "label IS NOT NULL" },
+          { "name": "2200_17534_10_not_null", "clause": "is_active IS NOT NULL" }
+        ]
+      }
+    },
+    "maturity_statements": {
+      "columns": [
+        { "column_name": "id", "data_type": "uuid", "nullable": false, "default": "gen_random_uuid()" },
+        { "column_name": "maturity_model_id", "data_type": "text", "nullable": false, "default": null },
+        { "column_name": "domain_title", "data_type": "text", "nullable": true, "default": null },
+        { "column_name": "mapped_domain_id", "data_type": "text", "nullable": true, "default": null },
+        { "column_name": "process_area", "data_type": "text", "nullable": true, "default": null },
+        { "column_name": "level_1_basic", "data_type": "text", "nullable": true, "default": null },
+        { "column_name": "level_2_developing", "data_type": "text", "nullable": true, "default": null },
+        { "column_name": "level_3_established", "data_type": "text", "nullable": true, "default": null },
+        { "column_name": "level_4_advanced", "data_type": "text", "nullable": true, "default": null },
+        { "column_name": "level_5_leading", "data_type": "text", "nullable": true, "default": null },
+        { "column_name": "assessor_instruction", "data_type": "text", "nullable": true, "default": null },
+        { "column_name": "evidence_examples", "data_type": "text", "nullable": true, "default": null },
+        { "column_name": "review_steps", "data_type": "text", "nullable": true, "default": null },
+        { "column_name": "alert_rule_hint", "data_type": "text", "nullable": true, "default": null },
+        { "column_name": "source_row", "data_type": "text", "nullable": true, "default": null },
+        { "column_name": "is_active", "data_type": "boolean", "nullable": false, "default": "true" },
+        { "column_name": "sort_order", "data_type": "integer", "nullable": true, "default": "0" },
+        { "column_name": "created_at", "data_type": "timestamptz", "nullable": true, "default": "now()" },
+        { "column_name": "updated_at", "data_type": "timestamptz", "nullable": true, "default": "now()" }
+      ],
+      "constraints": {
+        "primary_key": ["id"],
+        "unique": [{ "name": "maturity_statements_model_process_unique", "columns": ["maturity_model_id", "process_area"] }],
+        "foreign_keys": [],
+        "check": [
+          { "name": "2200_17577_1_not_null", "clause": "id IS NOT NULL" },
+          { "name": "2200_17577_2_not_null", "clause": "maturity_model_id IS NOT NULL" },
+          { "name": "2200_17577_16_not_null", "clause": "is_active IS NOT NULL" }
+        ]
+      }
+    },
+    "questionnaires": {
+      "columns": [
+        { "column_name": "id", "data_type": "uuid", "nullable": false, "default": "gen_random_uuid()" },
+        { "column_name": "evaluation_type_id", "data_type": "uuid", "nullable": true, "default": null },
+        { "column_name": "domain_id", "data_type": "uuid", "nullable": true, "default": null },
+        { "column_name": "process_id", "data_type": "uuid", "nullable": true, "default": null },
+        { "column_name": "code", "data_type": "text", "nullable": true, "default": null },
+        { "column_name": "label", "data_type": "text", "nullable": false, "default": null },
+        { "column_name": "description", "data_type": "text", "nullable": true, "default": null },
+        { "column_name": "version", "data_type": "text", "nullable": true, "default": "'1.0'::text" },
+        { "column_name": "is_active", "data_type": "boolean", "nullable": false, "default": "true" },
+        { "column_name": "created_at", "data_type": "timestamptz", "nullable": true, "default": "now()" },
+        { "column_name": "updated_at", "data_type": "timestamptz", "nullable": true, "default": "now()" }
+      ],
+      "constraints": {
+        "primary_key": ["id"],
+        "unique": [],
+        "foreign_keys": [
+          { "name": "questionnaires_evaluation_type_id_fkey", "column": "evaluation_type_id", "references": "evaluation_types(id)" },
+          { "name": "questionnaires_domain_id_fkey", "column": "domain_id", "references": "domains(id)" },
+          { "name": "questionnaires_process_id_fkey", "column": "process_id", "references": "processes(id)" }
+        ],
+        "check": [
+          { "name": "2200_17603_1_not_null", "clause": "id IS NOT NULL" },
+          { "name": "2200_17603_6_not_null", "clause": "label IS NOT NULL" },
+          { "name": "2200_17603_9_not_null", "clause": "is_active IS NOT NULL" }
+        ]
+      }
+    },
+    "questions": {
+      "columns": [
+        { "column_name": "id", "data_type": "uuid", "nullable": false, "default": "gen_random_uuid()" },
+        { "column_name": "questionnaire_id", "data_type": "uuid", "nullable": true, "default": null },
+        { "column_name": "evaluation_type_id", "data_type": "uuid", "nullable": true, "default": null },
+        { "column_name": "domain_id", "data_type": "uuid", "nullable": true, "default": null },
+        { "column_name": "process_id", "data_type": "uuid", "nullable": true, "default": null },
+        { "column_name": "question_code", "data_type": "text", "nullable": false, "default": null },
+        { "column_name": "question_text", "data_type": "text", "nullable": false, "default": null },
+        { "column_name": "question_intent", "data_type": "text", "nullable": true, "default": null },
+        { "column_name": "instruction_text", "data_type": "text", "nullable": true, "default": null },
+        { "column_name": "evidence_examples", "data_type": "text", "nullable": true, "default": null },
+        { "column_name": "cmmi_reference", "data_type": "text", "nullable": true, "default": null },
+        { "column_name": "alert_rule_hint", "data_type": "text", "nullable": true, "default": null },
+        { "column_name": "mapped_maturity_model_id", "data_type": "text", "nullable": true, "default": null },
+        { "column_name": "mapped_maturity_statement_id", "data_type": "text", "nullable": true, "default": null },
+        { "column_name": "matched_process_area", "data_type": "text", "nullable": true, "default": null },
+        { "column_name": "maturity_match_score", "data_type": "numeric", "nullable": true, "default": null },
+        { "column_name": "response_type", "data_type": "text", "nullable": true, "default": "'numeric_0_5'::text" },
+        { "column_name": "scoring_scale", "data_type": "text", "nullable": true, "default": "'0-5'::text" },
+        { "column_name": "weight", "data_type": "numeric", "nullable": true, "default": "1" },
+        { "column_name": "is_mandatory", "data_type": "boolean", "nullable": true, "default": "true" },
+        { "column_name": "source_cell", "data_type": "text", "nullable": true, "default": null },
+        { "column_name": "sheet_name", "data_type": "text", "nullable": true, "default": null },
+        { "column_name": "sort_order", "data_type": "integer", "nullable": true, "default": "0" },
+        { "column_name": "is_active", "data_type": "boolean", "nullable": false, "default": "true" },
+        { "column_name": "created_at", "data_type": "timestamptz", "nullable": true, "default": "now()" },
+        { "column_name": "updated_at", "data_type": "timestamptz", "nullable": true, "default": "now()" },
+        { "column_name": "source_id", "data_type": "text", "nullable": true, "default": null },
+        { "column_name": "evidence_min_required", "data_type": "integer", "nullable": false, "default": "1" },
+        { "column_name": "primary_dimension", "data_type": "text", "nullable": true, "default": null },
+        { "column_name": "expert_review_status", "data_type": "text", "nullable": false, "default": "'reference_derived'::text" },
+        { "column_name": "expert_basis", "data_type": "text", "nullable": true, "default": null }
+      ],
+      "constraints": {
+        "primary_key": ["id"],
+        "unique": [{ "name": "questions_question_code_key", "columns": ["question_code"] }],
+        "foreign_keys": [
+          { "name": "questions_questionnaire_id_fkey", "column": "questionnaire_id", "references": "questionnaires(id)" },
+          { "name": "questions_evaluation_type_id_fkey", "column": "evaluation_type_id", "references": "evaluation_types(id)" },
+          { "name": "questions_domain_id_fkey", "column": "domain_id", "references": "domains(id)" },
+          { "name": "questions_process_id_fkey", "column": "process_id", "references": "processes(id)" }
+        ],
+        "check": [
+          { "name": "2200_17634_1_not_null", "clause": "id IS NOT NULL" },
+          { "name": "2200_17634_6_not_null", "clause": "question_code IS NOT NULL" },
+          { "name": "2200_17634_7_not_null", "clause": "question_text IS NOT NULL" },
+          { "name": "2200_17634_24_not_null", "clause": "is_active IS NOT NULL" },
+          { "name": "2200_17634_28_not_null", "clause": "evidence_min_required IS NOT NULL" },
+          { "name": "2200_17634_30_not_null", "clause": "expert_review_status IS NOT NULL" }
+        ]
+      }
+    }
+  },
+  "existing_questionnaires": {
+    "count": 0,
+    "rows": [],
+    "recommendation": "The questionnaires table is empty. You need to create a new questionnaire row for ofs_onshore before inserting questions. The questionnaire should reference the ofs_onshore evaluation_type_id and will serve as the parent container for all 536 questions."
+  },
+  "notes_for_migration_planning": {
+    "questions_required_columns": [
+      "question_code (text, NOT NULL, UNIQUE — e.g. 'ofs_q_1_1_01')",
+      "question_text (text, NOT NULL)",
+      "evidence_min_required (integer, NOT NULL, default 1)",
+      "expert_review_status (text, NOT NULL, default 'reference_derived')"
+    ],
+    "questions_useful_fk_columns": [
+      "questionnaire_id → questionnaires(id)",
+      "evaluation_type_id → evaluation_types(id)",
+      "domain_id → domains(id) — L1 domain the question belongs to",
+      "process_id → processes(id) — L2 process the question belongs to"
+    ],
+    "questions_defaults_applied_automatically": [
+      "id = gen_random_uuid()",
+      "response_type = 'numeric_0_5'",
+      "scoring_scale = '0-5'",
+      "weight = 1",
+      "is_mandatory = true",
+      "sort_order = 0",
+      "is_active = true",
+      "evidence_min_required = 1",
+      "expert_review_status = 'reference_derived'"
+    ]
+  }
+}
