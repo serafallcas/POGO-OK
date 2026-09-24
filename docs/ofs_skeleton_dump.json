@@ -1,0 +1,762 @@
+[
+  {
+    "eval_code": "pogo_1",
+    "eval_label": "POGO 1",
+    "eval_sort": 1,
+    "domain_code": "pogo_1__develop_prospect_portfolio_plan",
+    "domain_label": "Develop prospect portfolio plan",
+    "domain_sort": 1,
+    "process_code": "proc_develop_prospect_portfolio_1",
+    "process_label": "Prospect Ranking and Prioritization"
+  },
+  {
+    "eval_code": "pogo_1",
+    "eval_label": "POGO 1",
+    "eval_sort": 1,
+    "domain_code": "pogo_1__develop_prospect_portfolio_plan",
+    "domain_label": "Develop prospect portfolio plan",
+    "domain_sort": 1,
+    "process_code": "proc_develop_prospect_portfolio_2",
+    "process_label": "Resource and Reserves Estimation"
+  },
+  {
+    "eval_code": "pogo_1",
+    "eval_label": "POGO 1",
+    "eval_sort": 1,
+    "domain_code": "pogo_1__drill_evaluate_exploration_an",
+    "domain_label": "Drill & evaluate exploration and appraisal",
+    "domain_sort": 2,
+    "process_code": "proc_drill_evaluate_exploration_1",
+    "process_label": "Exploration Well Planning and Design"
+  },
+  {
+    "eval_code": "pogo_1",
+    "eval_label": "POGO 1",
+    "eval_sort": 1,
+    "domain_code": "pogo_1__drill_evaluate_exploration_an",
+    "domain_label": "Drill & evaluate exploration and appraisal",
+    "domain_sort": 2,
+    "process_code": "proc_drill_evaluate_exploration_2",
+    "process_label": "Formation Evaluation and Well Testing"
+  },
+  {
+    "eval_code": "pogo_1",
+    "eval_label": "POGO 1",
+    "eval_sort": 1,
+    "domain_code": "pogo_1__develop_geological_reservoir_a",
+    "domain_label": "Develop geological, reservoir and production models",
+    "domain_sort": 3,
+    "process_code": "proc_develop_geological_reservoir_1",
+    "process_label": "Static Reservoir Modeling"
+  },
+  {
+    "eval_code": "pogo_1",
+    "eval_label": "POGO 1",
+    "eval_sort": 1,
+    "domain_code": "pogo_1__develop_geological_reservoir_a",
+    "domain_label": "Develop geological, reservoir and production models",
+    "domain_sort": 3,
+    "process_code": "proc_develop_geological_reservoir_2",
+    "process_label": "Dynamic Reservoir Simulation"
+  },
+  {
+    "eval_code": "pogo_1",
+    "eval_label": "POGO 1",
+    "eval_sort": 1,
+    "domain_code": "pogo_1__evaluate_technical_and_economic",
+    "domain_label": "Evaluate technical and economic viability",
+    "domain_sort": 4,
+    "process_code": "proc_evaluate_technical_economic_1",
+    "process_label": "Technical Feasibility Assessment"
+  },
+  {
+    "eval_code": "pogo_1",
+    "eval_label": "POGO 1",
+    "eval_sort": 1,
+    "domain_code": "pogo_1__evaluate_technical_and_economic",
+    "domain_label": "Evaluate technical and economic viability",
+    "domain_sort": 4,
+    "process_code": "proc_evaluate_technical_economic_2",
+    "process_label": "Economic Modeling and Sensitivity Analysis"
+  },
+  {
+    "eval_code": "pogo_1",
+    "eval_label": "POGO 1",
+    "eval_sort": 1,
+    "domain_code": "pogo_1__perform_feasibility_studies",
+    "domain_label": "Perform feasibility studies",
+    "domain_sort": 5,
+    "process_code": "proc_perform_feasibility_1",
+    "process_label": "Preliminary Engineering Assessment"
+  },
+  {
+    "eval_code": "pogo_1",
+    "eval_label": "POGO 1",
+    "eval_sort": 1,
+    "domain_code": "pogo_1__perform_feasibility_studies",
+    "domain_label": "Perform feasibility studies",
+    "domain_sort": 5,
+    "process_code": "proc_perform_feasibility_2",
+    "process_label": "Environmental and Social Impact Assessment"
+  },
+  {
+    "eval_code": "pogo_1",
+    "eval_label": "POGO 1",
+    "eval_sort": 1,
+    "domain_code": "pogo_1__develop_execute",
+    "domain_label": "Develop & Execute",
+    "domain_sort": 6,
+    "process_code": "proc_develop_execute_1",
+    "process_label": "Project Execution Planning"
+  },
+  {
+    "eval_code": "pogo_1",
+    "eval_label": "POGO 1",
+    "eval_sort": 1,
+    "domain_code": "pogo_1__develop_execute",
+    "domain_label": "Develop & Execute",
+    "domain_sort": 6,
+    "process_code": "proc_develop_execute_2",
+    "process_label": "Construction and Installation Management"
+  },
+  {
+    "eval_code": "pogo_1",
+    "eval_label": "POGO 1",
+    "eval_sort": 1,
+    "domain_code": "pogo_1__concept_selection",
+    "domain_label": "Concept selection",
+    "domain_sort": 7,
+    "process_code": "proc_concept_selection_1",
+    "process_label": "Development Concept Screening"
+  },
+  {
+    "eval_code": "pogo_1",
+    "eval_label": "POGO 1",
+    "eval_sort": 1,
+    "domain_code": "pogo_1__concept_selection",
+    "domain_label": "Concept selection",
+    "domain_sort": 7,
+    "process_code": "proc_concept_selection_2",
+    "process_label": "Technology Maturation Assessment"
+  },
+  {
+    "eval_code": "pogo_1",
+    "eval_label": "POGO 1",
+    "eval_sort": 1,
+    "domain_code": "pogo_1__perform_front_end_engineering_d",
+    "domain_label": "Perform front-end engineering design",
+    "domain_sort": 8,
+    "process_code": "proc_perform_front_end_engineering_1",
+    "process_label": "FEED Scope Definition and Process Design"
+  },
+  {
+    "eval_code": "pogo_1",
+    "eval_label": "POGO 1",
+    "eval_sort": 1,
+    "domain_code": "pogo_1__perform_front_end_engineering_d",
+    "domain_label": "Perform front-end engineering design",
+    "domain_sort": 8,
+    "process_code": "proc_perform_front_end_engineering_2",
+    "process_label": "HAZOP and Quantitative Risk Assessment"
+  },
+  {
+    "eval_code": "pogo_1",
+    "eval_label": "POGO 1",
+    "eval_sort": 1,
+    "domain_code": "pogo_1__prepare_detailed_design",
+    "domain_label": "Prepare detailed design",
+    "domain_sort": 9,
+    "process_code": "proc_prepare_detailed_design_1",
+    "process_label": "Detailed Engineering Design"
+  },
+  {
+    "eval_code": "pogo_1",
+    "eval_label": "POGO 1",
+    "eval_sort": 1,
+    "domain_code": "pogo_1__prepare_detailed_design",
+    "domain_label": "Prepare detailed design",
+    "domain_sort": 9,
+    "process_code": "proc_prepare_detailed_design_2",
+    "process_label": "Procurement and Material Specification"
+  },
+  {
+    "eval_code": "pogo_1",
+    "eval_label": "POGO 1",
+    "eval_sort": 1,
+    "domain_code": "pogo_1__manage_asset_development",
+    "domain_label": "Manage asset development",
+    "domain_sort": 10,
+    "process_code": "proc_manage_asset_development_1",
+    "process_label": "Field Development Planning"
+  },
+  {
+    "eval_code": "pogo_1",
+    "eval_label": "POGO 1",
+    "eval_sort": 1,
+    "domain_code": "pogo_1__manage_asset_development",
+    "domain_label": "Manage asset development",
+    "domain_sort": 10,
+    "process_code": "proc_manage_asset_development_2",
+    "process_label": "Production Surveillance and Optimization"
+  },
+  {
+    "eval_code": "pogo_1",
+    "eval_label": "POGO 1",
+    "eval_sort": 1,
+    "domain_code": "pogo_1__commission_and_handover",
+    "domain_label": "Commission and handover",
+    "domain_sort": 11,
+    "process_code": "proc_commission_and_handover_1",
+    "process_label": "Mechanical Completion Verification"
+  },
+  {
+    "eval_code": "pogo_1",
+    "eval_label": "POGO 1",
+    "eval_sort": 1,
+    "domain_code": "pogo_1__commission_and_handover",
+    "domain_label": "Commission and handover",
+    "domain_sort": 11,
+    "process_code": "proc_commission_and_handover_2",
+    "process_label": "Pre-Startup Safety Review"
+  },
+  {
+    "eval_code": "pogo_2_a",
+    "eval_label": "POGO 2 A",
+    "eval_sort": 2,
+    "domain_code": "pogo_2_a__trade_transport",
+    "domain_label": "Trade & Transport",
+    "domain_sort": 12,
+    "process_code": "proc_trade_transport_1",
+    "process_label": "Crude Oil Lifting and Scheduling"
+  },
+  {
+    "eval_code": "pogo_2_a",
+    "eval_label": "POGO 2 A",
+    "eval_sort": 2,
+    "domain_code": "pogo_2_a__trade_transport",
+    "domain_label": "Trade & Transport",
+    "domain_sort": 12,
+    "process_code": "proc_trade_transport_2",
+    "process_label": "Pipeline Transportation Management"
+  },
+  {
+    "eval_code": "pogo_2_a",
+    "eval_label": "POGO 2 A",
+    "eval_sort": 2,
+    "domain_code": "pogo_2_a__process_refine",
+    "domain_label": "Process & Refine",
+    "domain_sort": 13,
+    "process_code": "proc_process_refine_1",
+    "process_label": "Crude Oil Processing and Stabilization"
+  },
+  {
+    "eval_code": "pogo_2_a",
+    "eval_label": "POGO 2 A",
+    "eval_sort": 2,
+    "domain_code": "pogo_2_a__process_refine",
+    "domain_label": "Process & Refine",
+    "domain_sort": 13,
+    "process_code": "proc_process_refine_2",
+    "process_label": "Gas Treatment and Conditioning"
+  },
+  {
+    "eval_code": "pogo_2_b",
+    "eval_label": "POGO 2 B",
+    "eval_sort": 3,
+    "domain_code": "pogo_2_b__store_distribute",
+    "domain_label": "Store & Distribute",
+    "domain_sort": 14,
+    "process_code": "proc_store_distribute_1",
+    "process_label": "Tank Farm and Storage Management"
+  },
+  {
+    "eval_code": "pogo_2_b",
+    "eval_label": "POGO 2 B",
+    "eval_sort": 3,
+    "domain_code": "pogo_2_b__store_distribute",
+    "domain_label": "Store & Distribute",
+    "domain_sort": 14,
+    "process_code": "proc_store_distribute_2",
+    "process_label": "Distribution Network Optimization"
+  },
+  {
+    "eval_code": "pogo_2_b",
+    "eval_label": "POGO 2 B",
+    "eval_sort": 3,
+    "domain_code": "pogo_2_b__market_sell",
+    "domain_label": "Market & Sell",
+    "domain_sort": 15,
+    "process_code": "proc_market_sell_1",
+    "process_label": "Contract Negotiation and Pricing"
+  },
+  {
+    "eval_code": "pogo_2_b",
+    "eval_label": "POGO 2 B",
+    "eval_sort": 3,
+    "domain_code": "pogo_2_b__market_sell",
+    "domain_label": "Market & Sell",
+    "domain_sort": 15,
+    "process_code": "proc_market_sell_2",
+    "process_label": "Market Intelligence and Demand Forecasting"
+  },
+  {
+    "eval_code": "pogo_2_c",
+    "eval_label": "POGO 2 C",
+    "eval_sort": 4,
+    "domain_code": "pogo_2_c__primary_distribution",
+    "domain_label": "Primary Distribution",
+    "domain_sort": 16,
+    "process_code": "proc_primary_distribution_1",
+    "process_label": "Wholesale Product Allocation"
+  },
+  {
+    "eval_code": "pogo_2_c",
+    "eval_label": "POGO 2 C",
+    "eval_sort": 4,
+    "domain_code": "pogo_2_c__primary_distribution",
+    "domain_label": "Primary Distribution",
+    "domain_sort": 16,
+    "process_code": "proc_primary_distribution_2",
+    "process_label": "Primary Logistics Planning"
+  },
+  {
+    "eval_code": "pogo_2_c",
+    "eval_label": "POGO 2 C",
+    "eval_sort": 4,
+    "domain_code": "pogo_2_c__secondary_distribution",
+    "domain_label": "Secondary Distribution",
+    "domain_sort": 17,
+    "process_code": "proc_secondary_distribution_1",
+    "process_label": "Retail Delivery and Last-Mile Logistics"
+  },
+  {
+    "eval_code": "pogo_2_c",
+    "eval_label": "POGO 2 C",
+    "eval_sort": 4,
+    "domain_code": "pogo_2_c__secondary_distribution",
+    "domain_label": "Secondary Distribution",
+    "domain_sort": 17,
+    "process_code": "proc_secondary_distribution_2",
+    "process_label": "Depot Operations and Inventory Control"
+  },
+  {
+    "eval_code": "pogo_2_c",
+    "eval_label": "POGO 2 C",
+    "eval_sort": 4,
+    "domain_code": "pogo_2_c__develop_vision_and_strategy",
+    "domain_label": "Develop Vision And Strategy",
+    "domain_sort": 18,
+    "process_code": "proc_develop_vision_strategy_1",
+    "process_label": "Corporate Strategy Development"
+  },
+  {
+    "eval_code": "pogo_2_c",
+    "eval_label": "POGO 2 C",
+    "eval_sort": 4,
+    "domain_code": "pogo_2_c__develop_vision_and_strategy",
+    "domain_label": "Develop Vision And Strategy",
+    "domain_sort": 18,
+    "process_code": "proc_develop_vision_strategy_2",
+    "process_label": "Energy Transition Planning"
+  },
+  {
+    "eval_code": "pogo_2_c",
+    "eval_label": "POGO 2 C",
+    "eval_sort": 4,
+    "domain_code": "pogo_2_c__manage_commercials_and_licenses",
+    "domain_label": "Manage Commercials and Licenses",
+    "domain_sort": 19,
+    "process_code": "proc_manage_commercials_licenses_1",
+    "process_label": "License Acquisition and Management"
+  },
+  {
+    "eval_code": "pogo_2_c",
+    "eval_label": "POGO 2 C",
+    "eval_sort": 4,
+    "domain_code": "pogo_2_c__manage_commercials_and_licenses",
+    "domain_label": "Manage Commercials and Licenses",
+    "domain_sort": 19,
+    "process_code": "proc_manage_commercials_licenses_2",
+    "process_label": "Joint Venture and Partnership Management"
+  },
+  {
+    "eval_code": "pogo_2_d_a",
+    "eval_label": "POGO 2 D A",
+    "eval_sort": 5,
+    "domain_code": "pogo_2_d_a__manage_health_safety",
+    "domain_label": "Manage Health Safety",
+    "domain_sort": 20,
+    "process_code": "proc_manage_health_safety_1",
+    "process_label": "Occupational Health and Safety Management"
+  },
+  {
+    "eval_code": "pogo_2_d_a",
+    "eval_label": "POGO 2 D A",
+    "eval_sort": 5,
+    "domain_code": "pogo_2_d_a__manage_health_safety",
+    "domain_label": "Manage Health Safety",
+    "domain_sort": 20,
+    "process_code": "proc_manage_health_safety_2",
+    "process_label": "Emergency Response and Crisis Management"
+  },
+  {
+    "eval_code": "pogo_2_d_a",
+    "eval_label": "POGO 2 D A",
+    "eval_sort": 5,
+    "domain_code": "pogo_2_d_a__manage_enterprise_portofolio",
+    "domain_label": "Manage Enterprise Portfolio",
+    "domain_sort": 21,
+    "process_code": "proc_manage_enterprise_portfolio_1",
+    "process_label": "Portfolio Valuation and Optimization"
+  },
+  {
+    "eval_code": "pogo_2_d_a",
+    "eval_label": "POGO 2 D A",
+    "eval_sort": 5,
+    "domain_code": "pogo_2_d_a__manage_enterprise_portofolio",
+    "domain_label": "Manage Enterprise Portfolio",
+    "domain_sort": 21,
+    "process_code": "proc_manage_enterprise_portfolio_2",
+    "process_label": "Capital Allocation and Investment Planning"
+  },
+  {
+    "eval_code": "pogo_2_d_a",
+    "eval_label": "POGO 2 D A",
+    "eval_sort": 5,
+    "domain_code": "pogo_2_d_a__manage_governance_risk_and_comp",
+    "domain_label": "Manage Governance Risk and Compliance",
+    "domain_sort": 22,
+    "process_code": "proc_manage_governance_risk_comp_1",
+    "process_label": "Enterprise Risk Management"
+  },
+  {
+    "eval_code": "pogo_2_d_a",
+    "eval_label": "POGO 2 D A",
+    "eval_sort": 5,
+    "domain_code": "pogo_2_d_a__manage_governance_risk_and_comp",
+    "domain_label": "Manage Governance Risk and Compliance",
+    "domain_sort": 22,
+    "process_code": "proc_manage_governance_risk_comp_2",
+    "process_label": "Regulatory Compliance Management"
+  },
+  {
+    "eval_code": "pogo_2_d_a",
+    "eval_label": "POGO 2 D A",
+    "eval_sort": 5,
+    "domain_code": "pogo_2_d_a__manage_external_relationships",
+    "domain_label": "Manage External Relationships",
+    "domain_sort": 23,
+    "process_code": "proc_manage_external_relationships_1",
+    "process_label": "Government and Regulatory Affairs"
+  },
+  {
+    "eval_code": "pogo_2_d_a",
+    "eval_label": "POGO 2 D A",
+    "eval_sort": 5,
+    "domain_code": "pogo_2_d_a__manage_external_relationships",
+    "domain_label": "Manage External Relationships",
+    "domain_sort": 23,
+    "process_code": "proc_manage_external_relationships_2",
+    "process_label": "Community and Stakeholder Engagement"
+  },
+  {
+    "eval_code": "pogo_2_d_b",
+    "eval_label": "POGO 2 D B",
+    "eval_sort": 6,
+    "domain_code": "pogo_2_d_b__manage_supply_chain",
+    "domain_label": "Manage Supply Chain",
+    "domain_sort": 24,
+    "process_code": "proc_manage_supply_chain_1",
+    "process_label": "Strategic Sourcing and Category Management"
+  },
+  {
+    "eval_code": "pogo_2_d_b",
+    "eval_label": "POGO 2 D B",
+    "eval_sort": 6,
+    "domain_code": "pogo_2_d_b__manage_supply_chain",
+    "domain_label": "Manage Supply Chain",
+    "domain_sort": 24,
+    "process_code": "proc_manage_supply_chain_2",
+    "process_label": "Inventory and Warehouse Management"
+  },
+  {
+    "eval_code": "pogo_2_d_b",
+    "eval_label": "POGO 2 D B",
+    "eval_sort": 6,
+    "domain_code": "pogo_2_d_b__manage_information_technology",
+    "domain_label": "Manage Information Technology",
+    "domain_sort": 25,
+    "process_code": "proc_manage_information_technology_1",
+    "process_label": "IT Infrastructure and Cybersecurity"
+  },
+  {
+    "eval_code": "pogo_2_d_b",
+    "eval_label": "POGO 2 D B",
+    "eval_sort": 6,
+    "domain_code": "pogo_2_d_b__manage_information_technology",
+    "domain_label": "Manage Information Technology",
+    "domain_sort": 25,
+    "process_code": "proc_manage_information_technology_2",
+    "process_label": "Digital Transformation and OT Systems"
+  },
+  {
+    "eval_code": "pogo_2_d_b",
+    "eval_label": "POGO 2 D B",
+    "eval_sort": 6,
+    "domain_code": "pogo_2_d_b__perform_global_trade_services",
+    "domain_label": "Perform Global Trade Services",
+    "domain_sort": 26,
+    "process_code": "proc_perform_global_trade_1",
+    "process_label": "Customs and Export Control"
+  },
+  {
+    "eval_code": "pogo_2_d_b",
+    "eval_label": "POGO 2 D B",
+    "eval_sort": 6,
+    "domain_code": "pogo_2_d_b__perform_global_trade_services",
+    "domain_label": "Perform Global Trade Services",
+    "domain_sort": 26,
+    "process_code": "proc_perform_global_trade_2",
+    "process_label": "International Logistics Coordination"
+  },
+  {
+    "eval_code": "pogo_2_d_b",
+    "eval_label": "POGO 2 D B",
+    "eval_sort": 6,
+    "domain_code": "pogo_2_d_b__manage_financial_ressources",
+    "domain_label": "Manage Financial Resources",
+    "domain_sort": 27,
+    "process_code": "proc_manage_financial_resources_1",
+    "process_label": "Budgeting and Financial Planning"
+  },
+  {
+    "eval_code": "pogo_2_d_b",
+    "eval_label": "POGO 2 D B",
+    "eval_sort": 6,
+    "domain_code": "pogo_2_d_b__manage_financial_ressources",
+    "domain_label": "Manage Financial Resources",
+    "domain_sort": 27,
+    "process_code": "proc_manage_financial_resources_2",
+    "process_label": "Treasury and Cash Management"
+  },
+  {
+    "eval_code": "pogo_2_d_b",
+    "eval_label": "POGO 2 D B",
+    "eval_sort": 6,
+    "domain_code": "pogo_2_d_b__manage_legal",
+    "domain_label": "Manage Legal",
+    "domain_sort": 28,
+    "process_code": "proc_manage_legal_1",
+    "process_label": "Contract and Claims Management"
+  },
+  {
+    "eval_code": "pogo_2_d_b",
+    "eval_label": "POGO 2 D B",
+    "eval_sort": 6,
+    "domain_code": "pogo_2_d_b__manage_legal",
+    "domain_label": "Manage Legal",
+    "domain_sort": 28,
+    "process_code": "proc_manage_legal_2",
+    "process_label": "Intellectual Property and Compliance"
+  },
+  {
+    "eval_code": "pogo_2_e",
+    "eval_label": "POGO 2 E",
+    "eval_sort": 7,
+    "domain_code": "pogo_2_e__develop_and_manage_business",
+    "domain_label": "Develop and Manage Business",
+    "domain_sort": 29,
+    "process_code": "proc_develop_manage_business_1",
+    "process_label": "Business Process Improvement"
+  },
+  {
+    "eval_code": "pogo_2_e",
+    "eval_label": "POGO 2 E",
+    "eval_sort": 7,
+    "domain_code": "pogo_2_e__develop_and_manage_business",
+    "domain_label": "Develop and Manage Business",
+    "domain_sort": 29,
+    "process_code": "proc_develop_manage_business_2",
+    "process_label": "Performance Management and Reporting"
+  },
+  {
+    "eval_code": "pogo_2_e",
+    "eval_label": "POGO 2 E",
+    "eval_sort": 7,
+    "domain_code": "pogo_2_e__develop_and_manage_human_capita",
+    "domain_label": "Develop and manage human capital",
+    "domain_sort": 30,
+    "process_code": "proc_develop_manage_human_capital_1",
+    "process_label": "Talent Acquisition and Workforce Planning"
+  },
+  {
+    "eval_code": "pogo_2_e",
+    "eval_label": "POGO 2 E",
+    "eval_sort": 7,
+    "domain_code": "pogo_2_e__develop_and_manage_human_capita",
+    "domain_label": "Develop and manage human capital",
+    "domain_sort": 30,
+    "process_code": "proc_develop_manage_human_capital_2",
+    "process_label": "Learning and Competency Development"
+  },
+  {
+    "eval_code": "pogo_2_e",
+    "eval_label": "POGO 2 E",
+    "eval_sort": 7,
+    "domain_code": "pogo_2_e__manage_research_and_development",
+    "domain_label": "Manage Research And Development",
+    "domain_sort": 31,
+    "process_code": "proc_manage_research_development_1",
+    "process_label": "Technology Research and Piloting"
+  },
+  {
+    "eval_code": "pogo_2_e",
+    "eval_label": "POGO 2 E",
+    "eval_sort": 7,
+    "domain_code": "pogo_2_e__manage_research_and_development",
+    "domain_label": "Manage Research And Development",
+    "domain_sort": 31,
+    "process_code": "proc_manage_research_development_2",
+    "process_label": "R&D Portfolio and Collaboration Management"
+  },
+  {
+    "eval_code": "pogo_2_e",
+    "eval_label": "POGO 2 E",
+    "eval_sort": 7,
+    "domain_code": "pogo_2_e__manage_carbon_capture",
+    "domain_label": "Manage Carbon Capture",
+    "domain_sort": 32,
+    "process_code": "proc_manage_carbon_capture_1",
+    "process_label": "CO2 Capture and Compression"
+  },
+  {
+    "eval_code": "pogo_2_e",
+    "eval_label": "POGO 2 E",
+    "eval_sort": 7,
+    "domain_code": "pogo_2_e__manage_carbon_capture",
+    "domain_label": "Manage Carbon Capture",
+    "domain_sort": 32,
+    "process_code": "proc_manage_carbon_capture_2",
+    "process_label": "Carbon Storage and Monitoring"
+  },
+  {
+    "eval_code": "pogo_2_e",
+    "eval_label": "POGO 2 E",
+    "eval_sort": 7,
+    "domain_code": "pogo_2_e__manage_non_production_asset",
+    "domain_label": "Manage non-production asset",
+    "domain_sort": 33,
+    "process_code": "proc_manage_non_production_asset_1",
+    "process_label": "Real Estate and Facilities Management"
+  },
+  {
+    "eval_code": "pogo_2_e",
+    "eval_label": "POGO 2 E",
+    "eval_sort": 7,
+    "domain_code": "pogo_2_e__manage_non_production_asset",
+    "domain_label": "Manage non-production asset",
+    "domain_sort": 33,
+    "process_code": "proc_manage_non_production_asset_2",
+    "process_label": "Fleet and Vehicle Management"
+  },
+  {
+    "eval_code": "pogo_2_e",
+    "eval_label": "POGO 2 E",
+    "eval_sort": 7,
+    "domain_code": "pogo_2_e__manage_knowledge_improvement",
+    "domain_label": "Manage Knowledge, Improvement",
+    "domain_sort": 34,
+    "process_code": "proc_manage_knowledge_improvement_1",
+    "process_label": "Knowledge Management and Lessons Learned"
+  },
+  {
+    "eval_code": "pogo_2_e",
+    "eval_label": "POGO 2 E",
+    "eval_sort": 7,
+    "domain_code": "pogo_2_e__manage_knowledge_improvement",
+    "domain_label": "Manage Knowledge, Improvement",
+    "domain_sort": 34,
+    "process_code": "proc_manage_knowledge_improvement_2",
+    "process_label": "Continuous Improvement and Innovation"
+  },
+  {
+    "eval_code": "pogo_2_f",
+    "eval_label": "POGO 2 F",
+    "eval_sort": 8,
+    "domain_code": "pogo_2_f__manage_enterprise_asset",
+    "domain_label": "Manage Enterprise Asset",
+    "domain_sort": 35,
+    "process_code": "proc_manage_enterprise_asset_1",
+    "process_label": "Preventive and Predictive Maintenance"
+  },
+  {
+    "eval_code": "pogo_2_f",
+    "eval_label": "POGO 2 F",
+    "eval_sort": 8,
+    "domain_code": "pogo_2_f__manage_enterprise_asset",
+    "domain_label": "Manage Enterprise Asset",
+    "domain_sort": 35,
+    "process_code": "proc_manage_enterprise_asset_2",
+    "process_label": "Asset Integrity and Inspection"
+  },
+  {
+    "eval_code": "pogo_2_f",
+    "eval_label": "POGO 2 F",
+    "eval_sort": 8,
+    "domain_code": "pogo_2_f__acquire_to_retire",
+    "domain_label": "Acquire to retire",
+    "domain_sort": 36,
+    "process_code": "proc_acquire_to_retire_1",
+    "process_label": "Asset Lifecycle Planning"
+  },
+  {
+    "eval_code": "pogo_2_f",
+    "eval_label": "POGO 2 F",
+    "eval_sort": 8,
+    "domain_code": "pogo_2_f__acquire_to_retire",
+    "domain_label": "Acquire to retire",
+    "domain_sort": 36,
+    "process_code": "proc_acquire_to_retire_2",
+    "process_label": "Decommissioning and Abandonment"
+  },
+  {
+    "eval_code": "pogo_2_f",
+    "eval_label": "POGO 2 F",
+    "eval_sort": 8,
+    "domain_code": "pogo_2_f__drill_a_well",
+    "domain_label": "Drill a Well",
+    "domain_sort": 37,
+    "process_code": "proc_drill_a_well_1",
+    "process_label": "Well Design and Engineering"
+  },
+  {
+    "eval_code": "pogo_2_f",
+    "eval_label": "POGO 2 F",
+    "eval_sort": 8,
+    "domain_code": "pogo_2_f__drill_a_well",
+    "domain_label": "Drill a Well",
+    "domain_sort": 37,
+    "process_code": "proc_drill_a_well_2",
+    "process_label": "Drilling Operations Execution"
+  },
+  {
+    "eval_code": "pogo_2_f",
+    "eval_label": "POGO 2 F",
+    "eval_sort": 8,
+    "domain_code": "pogo_2_f__procure_to_pay",
+    "domain_label": "Procure to Pay",
+    "domain_sort": 38,
+    "process_code": "proc_procure_to_pay_1",
+    "process_label": "Purchase Requisition and Order Management"
+  },
+  {
+    "eval_code": "pogo_2_f",
+    "eval_label": "POGO 2 F",
+    "eval_sort": 8,
+    "domain_code": "pogo_2_f__procure_to_pay",
+    "domain_label": "Procure to Pay",
+    "domain_sort": 38,
+    "process_code": "proc_procure_to_pay_2",
+    "process_label": "Invoice Processing and Payment Execution"
+  }
+]
