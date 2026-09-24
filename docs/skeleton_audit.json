@@ -1,0 +1,184 @@
+{
+  "_generated": "2026-09-24 — read-only audit of the current APQC skeleton",
+  "summary": {
+    "total_evaluation_types": 8,
+    "total_domains": 38,
+    "total_processes": 76,
+    "total_questions": 0,
+    "total_maturity_models": 11,
+    "total_maturity_statements": 0,
+    "maturity_models_linked_to_a_domain": 0
+  },
+  "evaluation_types": [
+    {
+      "id": "37756260-1647-465a-a142-c463bb5907cc",
+      "code": "pogo_1",
+      "label": "POGO 1",
+      "sort_order": 1,
+      "n_domains": 11,
+      "n_processes": 22,
+      "n_questions": 0,
+      "n_maturity_models": 0
+    },
+    {
+      "id": "688e238b-617b-46b6-81fe-328551310d14",
+      "code": "pogo_2_a",
+      "label": "POGO 2 A",
+      "sort_order": 2,
+      "n_domains": 2,
+      "n_processes": 4,
+      "n_questions": 0,
+      "n_maturity_models": 0
+    },
+    {
+      "id": "7baf8003-f4f4-49c2-816f-1f3832ccf7a7",
+      "code": "pogo_2_b",
+      "label": "POGO 2 B",
+      "sort_order": 3,
+      "n_domains": 2,
+      "n_processes": 4,
+      "n_questions": 0,
+      "n_maturity_models": 0
+    },
+    {
+      "id": "78eaaf3d-70e2-4e9c-8e1d-82c5db139978",
+      "code": "pogo_2_c",
+      "label": "POGO 2 C",
+      "sort_order": 4,
+      "n_domains": 4,
+      "n_processes": 8,
+      "n_questions": 0,
+      "n_maturity_models": 0
+    },
+    {
+      "id": "7602a0b4-62ef-4e34-b5c3-6582f9b89cdf",
+      "code": "pogo_2_d_a",
+      "label": "POGO 2 D A",
+      "sort_order": 5,
+      "n_domains": 4,
+      "n_processes": 8,
+      "n_questions": 0,
+      "n_maturity_models": 0
+    },
+    {
+      "id": "a2399c5e-ab4c-4195-a129-cba3291b3960",
+      "code": "pogo_2_d_b",
+      "label": "POGO 2 D B",
+      "sort_order": 6,
+      "n_domains": 5,
+      "n_processes": 10,
+      "n_questions": 0,
+      "n_maturity_models": 0
+    },
+    {
+      "id": "84922d3c-87ca-4db1-ba7b-ec2b6e9bc766",
+      "code": "pogo_2_e",
+      "label": "POGO 2 E",
+      "sort_order": 7,
+      "n_domains": 6,
+      "n_processes": 12,
+      "n_questions": 0,
+      "n_maturity_models": 0
+    },
+    {
+      "id": "e364dbf8-3b3b-46e8-ab0d-2b6009948493",
+      "code": "pogo_2_f",
+      "label": "POGO 2 F",
+      "sort_order": 8,
+      "n_domains": 4,
+      "n_processes": 8,
+      "n_questions": 0,
+      "n_maturity_models": 0
+    }
+  ],
+  "maturity_models": [
+    {
+      "id": "7f96b97d-82ca-406b-b636-8b0085dc8173",
+      "code": "maturity__develop_and_execute",
+      "label": "Develop and execute",
+      "domain_id": null,
+      "mapped_domain_name": "Develop & Execute",
+      "n_statements": 0
+    },
+    {
+      "id": "aa31a7ab-72b7-4cc9-9c4c-83c45dd13903",
+      "code": "maturity__develop_and_manage_human_capital",
+      "label": "Develop and manage human capital",
+      "domain_id": null,
+      "mapped_domain_name": "Develop and manage human capita",
+      "n_statements": 0
+    },
+    {
+      "id": "9da8e57a-5b77-40ac-aa0a-99f3cb75ae9a",
+      "code": "maturity__develop_vision_and_strategy",
+      "label": "Develop vision and strategy",
+      "domain_id": null,
+      "mapped_domain_name": "Develop Vision And Strategy",
+      "n_statements": 0
+    },
+    {
+      "id": "db90dd4d-65df-4ecb-9167-b50adb5b278e",
+      "code": "maturity__manage_financial_resources",
+      "label": "Manage financial resources",
+      "domain_id": null,
+      "mapped_domain_name": "Manage Financial Resources",
+      "n_statements": 0
+    },
+    {
+      "id": "9226bdf0-4f86-4f87-a630-8c444dc1c9a4",
+      "code": "maturity__manage_governance_risk_and_compliancee",
+      "label": "Manage governance, risk and compliance",
+      "domain_id": null,
+      "mapped_domain_name": "Manage Governance Risk and Comp",
+      "n_statements": 0
+    },
+    {
+      "id": "3fcbae5d-88be-4b4e-b777-c4f5ce01b3d9",
+      "code": "maturity__manage_health_safety_and_environment",
+      "label": "Manage health, safety and environment",
+      "domain_id": null,
+      "mapped_domain_name": "Manage Health Safety",
+      "n_statements": 0
+    },
+    {
+      "id": "f3a86b0a-98e0-43f0-ada7-ec576fd8bea3",
+      "code": "maturity__manage_information_technology",
+      "label": "Manage Information Technology",
+      "domain_id": null,
+      "mapped_domain_name": "Manage Information Technology",
+      "n_statements": 0
+    },
+    {
+      "id": "e6ae97b1-73e9-42d4-b895-031b09a76b6d",
+      "code": "maturity__manage_supply_chain",
+      "label": "Manage Supply Chain",
+      "domain_id": null,
+      "mapped_domain_name": "Manage Supply Chain",
+      "n_statements": 0
+    },
+    {
+      "id": "e99acb76-2548-4add-b665-a733b19aed14",
+      "code": "maturity__market_and_sell",
+      "label": "Market and Sell",
+      "domain_id": null,
+      "mapped_domain_name": "Market & Sell",
+      "n_statements": 0
+    },
+    {
+      "id": "dd94cc4e-2b5c-4eea-847c-2405fa9bc621",
+      "code": "maturity__produce",
+      "label": "Produce",
+      "domain_id": null,
+      "mapped_domain_name": null,
+      "n_statements": 0
+    },
+    {
+      "id": "1c831036-a8da-4349-b5a5-a34d065c628a",
+      "code": "maturity__trade_and_transport",
+      "label": "Trade and Transport",
+      "domain_id": null,
+      "mapped_domain_name": "Trade & Transport",
+      "n_statements": 0
+    }
+  ]
+}
